@@ -196,11 +196,12 @@
                                         </div>
                                     </div>
                                 </div>`
-                )
+                ) 
             })
         }
         getProduct()
         setTimeout(() => {
+
             displayProducts()
 
         }, 1000)
@@ -256,7 +257,6 @@
             })
             document.querySelector('.totalProducts').innerHTML = `${cart.length ? cart.length : "0"}`
             cardAmount.innerHTML = `IN CART: ${cart.length} PRODUCTS`
-            // document.querySelector('.total-price').innerHTML = `TOTAL PRICE: $ ${cart[0].total}`
 
 
         }
@@ -274,8 +274,6 @@
 
 
                 // Decrement the total price
-                // Object.assign(cart[0].total -= cart[id].price);
-                // document.querySelector('.total-price').innerHTML = `TOTAL PRICE: $ ${cart[0].total}`
                 let cartStr = JSON.stringify(cart)
                 localStorage.setItem('cart', cartStr);
                 totalPrice('total-price')
@@ -292,10 +290,7 @@
 
             document.querySelector(`.amount-of-${cart[id].name}`).innerHTML = cart[id].amount;
             document.querySelector(`.price-of-${cart[id].name}`).innerHTML = "$ " + cart[id].price;
-            // Increment the total price
-
-            // Object.assign(cart[0].total += cart[id].price  );
-            // document.querySelector('.total-price').innerHTML = `TOTAL PRICE: $ ${cart[0].total}`
+            // Increment the total price 
             let cartStr = JSON.stringify(cart)
             localStorage.setItem('cart', cartStr);
             totalPrice('total-price')
@@ -308,8 +303,7 @@
         }
 
         document.querySelector('.btn-cart').addEventListener('click', () => {
-            document.querySelector('.cart-container').classList.toggle('active')
-            // console.log(JSON.parse(localStorage.getItem('cart')));
+            document.querySelector('.cart-container').classList.toggle('active') 
         })
 
         
