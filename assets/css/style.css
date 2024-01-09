@@ -13,7 +13,8 @@
   padding: 0;
   box-sizing: border-box;
 }
-
+.btn-cart {
+}
 .prices span:nth-child(1) {
   color: var(--custom-light-gray);
 }
@@ -75,14 +76,16 @@
 .btn-green-to-yellow:hover > * {
   color: white !important;
 }
-
+.nav-item .active{
+  color:red;
+}
 .carousel-content {
   display: none;
   opacity: 0;
   transition: opacity 0.5s linear;
 }
-.carousel-content .btn-warning{
-    padding: 1rem 3rem;
+.carousel-content .btn-warning {
+  padding: 1rem 3rem;
 }
 .carousel-content h4 {
   font-size: 2rem;
@@ -127,9 +130,14 @@
   width: 80px;
   align-self: end;
 }
-
+#tabs,
+.content {
+  width: 500px;
+}
 #tabs .tabs {
-  width: 300px;
+  position: relative;
+  flex: 1;
+  width: 100%;
 }
 #tabs .tabs::after {
   content: "";
@@ -139,10 +147,11 @@
   background-color: var(--custom-light-gray);
   position: absolute;
   bottom: 0;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
 }
-.tabs p.active::after,
-.tabs p::after {
+/* .tabs.active::after,
+.tabs::after {
   content: "";
   width: 100%;
   height: 5px;
@@ -154,16 +163,16 @@
   z-index: 3;
   transform: scaleX(1.5);
   transition: all 0.2s linear;
-}
-.tabs p:hover {
+} */
+.tabs:hover {
   cursor: pointer;
 }
-.tabs p.active::after,
-.tabs p:hover::after {
-  background-color: var(--olive);
+.tabs.active::after,
+.tabs:hover::after {
+  background-color: var(--olive) !important;
   transform: scaleX(1);
 }
-.tabs p.active {
+.tabs.active {
   color: var(--olive);
 }
 .products .product {
@@ -351,9 +360,12 @@
 footer .contacts i {
   color: var(--olive);
 }
-
+#cart {
+  max-height: 220px;
+  overflow-y: scroll;
+}
 .cart-container {
-  width: 300px;
+  width: 400px;
   top: 40px;
   left: -180%;
 }

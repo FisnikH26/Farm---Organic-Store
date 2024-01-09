@@ -19,61 +19,7 @@
 </head>
 
 <body>
-    <header>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary border border-bottom py-4 fw-bold fs-5">
-            <div class="container">
-                <a class="navbar-brand" href="#">
-                    <img src="/assets/img/farm.png" alt="logo" width="100px">
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link active fw-bold" href="/">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link fw-bold" href="/blog.html">Blog</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link fw-bold" href="#">Gallery</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link fw-bold" aria-current="page" href="/shop.html">Shop</a>
-                        </li>
-                    </ul>
-                    <div class="d-flex">
-                        <button class="btn">
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                        </button>
-                        <div class="position-relative">
-                            <button class="btn btn-cart">
-                                <i class="fa-solid fa-cart-shopping"></i>
-                                <sup class="fw-bold text-dark totalProducts">0</sup>
-                            </button>
-                            <div
-                                class="cart-container py-3 border-bottom bg-white border border-dark rounded position-absolute ">
-                                <div class="container">
-                                    <div class="border-bottom">
-                                        <p class="cartAmount fs-6 mb-0">IN CART: 0 PRODUCTS</p>
-                                        <p class="total-price fw-bold fs-6 mb-0">TOTAL PRICE: $0</p>
-                                    </div>
-                                    <div id="cart" class="d-flex flex-column py-3">
-
-                                    </div>
-                                    <div class=" border-top pt-2">
-                                        <a href="/checkout.html" class="text-decoration-none btn btn-primary w-100 text-center">Checkout</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </nav>
+    <header> 
     </header>
     <section class="banner d-flex align-items-center justify-content-center">
         <h3 class="position-solute banner-title text-white">Shop</h3>
@@ -90,25 +36,28 @@
         <div class="container">
 
             <div class="row">
-                <div class="col-lg-3"> 
+                <div class="col-lg-3">
                     <div class="popular-products">
                         <h5 class="border-bottom pb-3 font-poppins fw-semibold">POPULAR PRODUCTS</h5>
                         <div class="d-flex align-items-center gap-4">
-                            <img src="https://livedemo00.template-help.com/wt_prod-10492/images/product-1-220x160.png" width="85px" alt="">
+                            <img src="https://livedemo00.template-help.com/wt_prod-10492/images/product-1-220x160.png"
+                                width="85px" alt="">
                             <div class="mt-2">
                                 <p class="m-0">Banana</p>
                                 <p class="">$54</p>
                             </div>
                         </div>
                         <div class="d-flex align-items-center gap-4">
-                            <img src="https://livedemo00.template-help.com/wt_prod-10492/images/product-2-191x132.png" width="85px" alt="">
+                            <img src="https://livedemo00.template-help.com/wt_prod-10492/images/product-2-191x132.png"
+                                width="85px" alt="">
                             <div class="mt-2">
                                 <p class="m-0">Patatoes</p>
                                 <p class="">$19</p>
                             </div>
                         </div>
                         <div class="d-flex align-items-center gap-3">
-                            <img src="https://livedemo00.template-help.com/wt_prod-10492/images/product-5-204x156.png" width="85px" alt="">
+                            <img src="https://livedemo00.template-help.com/wt_prod-10492/images/product-5-204x156.png"
+                                width="85px" alt="">
                             <div class="mt-2">
                                 <p class="m-0">Strawberries</p>
                                 <p class="">$28</p>
@@ -202,10 +151,11 @@
         </div>
     </footer>
     <script src="/assets/js/helpers.js"></script>
-    <script>
-        document.querySelector('.btn-cart').addEventListener('click', () => {
-            document.querySelector('.cart-container').classList.toggle('active')
-        })
+    <script type="module">
+        import Navbar from '/assets/components/Navbar.js'
+        
+        document.querySelector('header').innerHTML = Navbar('Shop')
+        
         let products;
         let sortProducts = document.getElementById('sortProducts')
         sortProducts.addEventListener('change', () => {
@@ -254,7 +204,7 @@
             displayProducts()
 
         }, 1000)
- 
+
         let cart;
 
         if (localStorage.getItem('cart')) {
@@ -262,7 +212,6 @@
             displayCartItems()
         } else {
             cart = []
-            cart.unshift({ total: 0 })
         }
 
         async function addToCart(id) {
@@ -270,47 +219,49 @@
                 .then(res => res.json())
                 .then(data => {
                     cart.push({ id: data[0].id, name: data[0].name, category: data[0].category, img: data[0].img, price: data[0].price, amount: 1 })
-                    displayCartItems()
 
-                    Object.assign(cart[0].total +=  data[0].price);
+                    // Object.assign(cart[0].total +=  data[0].price);
                     document.querySelector('.total-price').innerHTML = `TOTAL PRICE: $ ${cart[0].total}`
                     let cartStr = JSON.stringify(cart)
                     localStorage.setItem('cart', cartStr);
+                    displayCartItems()
+                    totalPrice('total-price')
+
 
 
                 })
         }
         function displayCartItems() {
-
+            let items = JSON.parse(localStorage.getItem('cart'))
 
             let cartdiv = document.getElementById('cart')
             let cardAmount = document.querySelector('.cartAmount')
-            let newItem = document.createElement('div');
-            newItem.classList.add('d-flex')
-            cart.map((cartitem, i) => (
-                newItem.innerHTML = `<div class="img">
-                            <img src="${cartitem.img}" width="100px" alt="">
-                        </div>
-                        <div>
-                            <h5>${cartitem.name}</h5>
-                            <span>
-                                <button class="btn btn-danger" onclick="decProductAmount(${i})">-</button>
-                                <span class="amount-of-${cartitem.name}">${cartitem.amount}</span>
-                                <button class="btn btn-success" onclick="incProductAmount(${i})">+</button>
-                            </span>
-                            <span class="fw-bold price-of-${cartitem.name}" price="${cartitem.price}">$ ${cartitem.price}</span>
-                        </div>`
-            ))
-            cartdiv.appendChild(newItem)
-            document.querySelector('.totalProducts').innerHTML = `${cart.length ? cart.length - 1 : "0"}`
-            cardAmount.innerHTML = `IN CART: ${cart.length -1} PRODUCTS`
-            document.querySelector('.total-price').innerHTML = `TOTAL PRICE: $ ${cart[0].total}`
+            cartdiv.innerHTML = ''
+            items.forEach((cartitem, i) => {
+                cartdiv.innerHTML += `<div class="cart-items d-flex align-items-center"> 
+                                        <div class="img">
+                                                <img src="${cartitem.img}" width="70px" alt="">
+                                            </div>
+                                            <div>
+                                                <h5>${cartitem.name}</h5>
+                                                <button class="btn btn-danger mb-2" onclick="removeFromCart(${i})"><small>Remove item</small></button> 
+                                                <div class="d-flex align-items-center justify-content-between"> 
+                                                    <button class="btn btn-warning " onclick="decProductAmount(${i})">-</button>
+                                                    <span class="amount-of-${cartitem.name} px-2">${cartitem.amount}</span>
+                                                    <button class="btn btn-success" onclick="incProductAmount(${i})">+</button>
+                                                    <span class="fw-bold price-of-${cartitem.name} ps-2" price="${cartitem.price}">$${cartitem.price}</span> 
+                                                </div>
+                                            </div>
+                                        </div>`
+            })
+            document.querySelector('.totalProducts').innerHTML = `${cart.length ? cart.length : "0"}`
+            cardAmount.innerHTML = `IN CART: ${cart.length} PRODUCTS`
+            // document.querySelector('.total-price').innerHTML = `TOTAL PRICE: $ ${cart[0].total}`
 
-            
+
         }
 
         function decProductAmount(id) {
-            let price = Number(document.querySelector(`.price-of-${cart[id].name}`).getAttribute('price'));
 
             if (cart[id].amount <= 1) {
                 let removeConfirmation = confirm("You can't have less than 1")
@@ -323,32 +274,45 @@
 
 
                 // Decrement the total price
-                Object.assign(cart[0].total -= cart[id].price);
-                document.querySelector('.total-price').innerHTML = `TOTAL PRICE: $ ${cart[0].total}`
+                // Object.assign(cart[0].total -= cart[id].price);
+                // document.querySelector('.total-price').innerHTML = `TOTAL PRICE: $ ${cart[0].total}`
                 let cartStr = JSON.stringify(cart)
                 localStorage.setItem('cart', cartStr);
+                totalPrice('total-price')
+
 
             }
 
         }
 
         function incProductAmount(id) {
-            // let price = Number(document.querySelector(`.price-of-${cart[id].name}`).getAttribute('price'));
 
 
-            Object.assign(cart[id].amount, { amount: cart[id].amount++ }, );
+            Object.assign(cart[id].amount, { amount: cart[id].amount++ },);
 
             document.querySelector(`.amount-of-${cart[id].name}`).innerHTML = cart[id].amount;
             document.querySelector(`.price-of-${cart[id].name}`).innerHTML = "$ " + cart[id].price;
             // Increment the total price
 
-            Object.assign(cart[0].total += cart[id].price  );
-            document.querySelector('.total-price').innerHTML = `TOTAL PRICE: $ ${cart[0].total}`
+            // Object.assign(cart[0].total += cart[id].price  );
+            // document.querySelector('.total-price').innerHTML = `TOTAL PRICE: $ ${cart[0].total}`
             let cartStr = JSON.stringify(cart)
+            localStorage.setItem('cart', cartStr);
+            totalPrice('total-price')
+        }
+
+        const removeFromCart = (id) => {
+            let removeItem = cart.filter(item => item !== cart[id])
+            let cartStr = JSON.stringify(removeItem)
             localStorage.setItem('cart', cartStr);
         }
 
+        document.querySelector('.btn-cart').addEventListener('click', () => {
+            document.querySelector('.cart-container').classList.toggle('active')
+            // console.log(JSON.parse(localStorage.getItem('cart')));
+        })
 
+        
     </script>
 </body>
 

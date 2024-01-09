@@ -20,31 +20,7 @@
 
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary border border-bottom py-4 fw-bold fs-5">
-            <div class="container">
-                <a class="navbar-brand" href="#">
-                    <img src="/assets/img/farm.png" alt="" width="100px">
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link active fw-bold" href="/">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link fw-bold" aria-current="page" href="/blog.html">Blog</a>
-                        </li> 
-                        <li class="nav-item">
-                            <a class="nav-link fw-bold" href="/shop.html">Shop</a>
-                        </li>
-                    </ul> 
-                </div>
-            </div>
-        </nav>
+         
     </header>
     <section class="banner-blog d-flex align-items-center justify-content-center">
         <h3 class="banner-title text-white">Blog</h3>
@@ -138,8 +114,10 @@
 
 
 
-    <script type="module">
-
+    <script type="module"> 
+    import Navbar from '/assets/components/Navbar.js'
+        
+        document.querySelector('header').innerHTML = Navbar("Blog")
         async function getBlogs() {
             let div = document.querySelector(".row")
             await fetch("https://658b1777ba789a9622386cc7.mockapi.io/farm/v1/blogs")

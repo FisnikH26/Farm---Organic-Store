@@ -65,13 +65,13 @@
         <div class="container">
             <div>
                 <h3>Your Cart:</h3>
-                <table class="table table-hover border border-dark">
+                <table class="table table-hover border border-dark rounded">
                     <thead>
                         <tr align="center">
                             <th scope="col">Image</th>
                             <th scope="col">Name</th>
-                            <th scope="col">Price</th>
                             <th scope="col">Amount</th>
+                            <th scope="col">Price</th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
@@ -81,7 +81,7 @@
                     <tfoot>
                         <tr>
                             <td colspan="3" class="fw-bold">Total Price</td>
-                            <td align="center" class="total-price-checkout fw-bold">0</td>
+                            <td align="center" class="total-price fw-bold">0</td>
                         </tr>
                     </tfoot>
                 </table>
@@ -92,13 +92,13 @@
                     <div class="form-floating mb-3 w-50 name">
                         <input type="text" class="form-control" name="name" id="floatingInput" placeholder="First Name">
                         <label for="floatingInput">Name</label>
-                    </div> 
+                    </div>
                     <div class="form-floating mb-3 w-50 email">
                         <input type="email" class="form-control" name="email" id="floatingInput" placeholder="Email">
-                        <label for="floatingInput">Email</label> 
+                        <label for="floatingInput">Email</label>
                     </div>
                 </div>
-                
+
                 <div class="d-flex gap-3">
                     <div class="form-floating mb-3 address w-50">
                         <input type="text" class="form-control" name="address" id="floatingInput" placeholder="Address">
@@ -202,10 +202,44 @@
     <script>
         let form = document.querySelector('form')
 
+        let order = localStorage.getItem("order") ? JSON.parse(localStorage.getItem('order')) : []
+        let cartdiv = document.querySelector('.cart-checkout')
+        let cartitem = JSON.parse(localStorage.getItem("cart"))
+        if (!cartitem) {
+            window.location.replace('http://127.0.0.1:5500/shop.html')
+        } else {
+
+            checkOutCart()
+        }
+
+
+        function checkOutCart() {
+            cartitem.map((item, i) => {
+
+                cartdiv.innerHTML += ` 
+                    <tr align="center"> 
+                        <td>
+                            <img src="${item.img}" alt="${item.name}" width="150px">
+                        </td>
+                        <td> 
+                            <h6 class="text-dark">${item.name}</h6>
+                        </td>
+                        <td> 
+                            <span class="price fw-bold text-dark">${item.amount} ${item.category !== "bread" ? "kg" : ""}</span>
+                        </td>
+                        <td> 
+                                <span class="price fw-bold text-dark">&dollar;${item.price}</span>
+                        </td>
+                    </tr> `
+
+            })
+
+            totalPrice('total-price')
+        }
 
 
 
-        form.addEventListener('submit', e =>{
+        form.addEventListener('submit', e => {
             e.preventDefault()
             let name = document.forms["myForm"]["name"].value;
             let address = document.forms["myForm"]["address"].value;
@@ -213,57 +247,38 @@
             let phoneNumber = document.forms["myForm"]["phoneNumber"].value;
             let creditCardNum = document.forms["myForm"]["creditCardNum"].value;
             let three_Digit = document.forms["myForm"]["three_Digit"].value;
-  
-            if (name == "" ) {
+
+            if (name == "") {
                 alert("Name must be filled out or you added invalid chars");
                 return false;
             } else if (email == "") {
                 alert("Email must be filled out or you added invalid chars");
                 return false;
-            }else if (address == "" ) {
+            } else if (address == "") {
                 alert("Address must be filled out or you added invalid chars");
                 return false;
             }
             else if (phoneNumber == "") {
                 alert("Phone Number must be filled out or you added invalid chars");
                 return false;
-            }else if (creditCardNum == "") {
+            } else if (creditCardNum == "") {
                 alert("Credit Card Number must be filled out or you added invalid chars");
                 return false;
-            }else if (three_Digit == "" || three_Digit.length > 3) {
+            } else if (three_Digit == "" || three_Digit.length > 3) {
                 alert("Three Digit Number must be filled out or you added invalid chars");
                 return false;
             }
 
             localStorage.clear()
             alert('Your order will arrive within 3 business days. \nNow you will be sent to home page')
-            location.replace('http://127.0.0.1:5510/')
-        })
-        
-
-        let cartdiv = document.querySelector('.cart-checkout')
-        let cartitem = JSON.parse(localStorage.getItem("cart")).slice(1)
-        cartitem.map((item, i) => {
-
-            cartdiv.innerHTML += ` 
-                <tr align="center"> 
-                    <td>
-                        <img src="${item.img}" alt="${item.name}" width="150px">
-                    </td>
-                    <td> 
-                        <h6 class="text-dark">${item.name}</h6>
-                    </td>
-                    <td> 
-                        <span class="price fw-bold text-dark">&dollar;${item.price}</span>
-                    </td>
-                    <td> 
-                        <span class="price fw-bold text-dark">${item.amount}</span>
-                    </td>
-                </tr> `
-
+            order.push({ name: name, email: email, phoneNumber: phoneNumber, cart: cartitem, });
+            let orderStr = JSON.stringify(order)
+            window.localStorage.setItem('orders', orderStr)
+            window.location.replace('http://127.0.0.1:5500/shop.html')
         })
 
-        document.querySelector('.total-price-checkout').innerHTML = "$ " + JSON.parse(localStorage.getItem("cart"))[0].total
+
+
 
     </script>
 </body>

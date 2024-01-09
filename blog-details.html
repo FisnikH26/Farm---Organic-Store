@@ -59,16 +59,14 @@
     <script src="/assets/js/helpers.js"></script>
 
     <script type="module">
-        import Blog from '/assets/components/Blog.js'
+        import blogDetails from '/assets/components/BlogDetails.js'
         const query_string = getQueryStringFromURL(window.location.href)
         const params = new URLSearchParams(query_string)
         const blog = document.querySelector(".blog")
         if (params.has('id')) {
             const id = params.get('id')
-            Blog(blog, id)
-        } else {
-            window.location.href = 'http://127.0.0.1:5500'
-        }
+            blogDetails(blog, id)
+        }  
 
     </script>
 
