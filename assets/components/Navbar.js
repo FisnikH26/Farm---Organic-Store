@@ -53,5 +53,6 @@ export default function Navbar(currentPage) {
             </div>
         </nav>`;
 
+        
   return content;
 }

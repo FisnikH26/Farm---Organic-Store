@@ -124,9 +124,6 @@
             let ordersContainer = document.querySelector('.ordersContainer')
             let orders = JSON.parse(localStorage.getItem('orders'))
 
-
-
-
             orders.map(order => {
                 const { name, email, cart, phoneNumber } = order
                 const { amount } = cart[0]
