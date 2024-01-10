@@ -76,6 +76,15 @@
 .btn-green-to-yellow:hover > * {
   color: white !important;
 }
+.alert{
+  left: 50%;
+  transform: translateX(-50%);
+  animation: alert 0.1s linear forwards;
+}
+@keyframes alert {
+  0%{top: 0px;}
+  100%{top: 10px;}
+}
 .nav-item .active{
   color:red;
 }
@@ -132,7 +141,7 @@
 }
 #tabs,
 .content {
-  width: 500px;
+  width: 700px;
 }
 #tabs .tabs {
   position: relative;

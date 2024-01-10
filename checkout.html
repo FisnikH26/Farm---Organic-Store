@@ -202,9 +202,16 @@
     <script>
         let form = document.querySelector('form')
 
-        let order = localStorage.getItem("order") ? JSON.parse(localStorage.getItem('order')) : []
+        let orders;
+
+        if (localStorage.getItem('orders')) {
+            orders = JSON.parse(localStorage.getItem('orders'))
+        } else {
+            orders = []
+        }
         let cartdiv = document.querySelector('.cart-checkout')
         let cartitem = JSON.parse(localStorage.getItem("cart"))
+
         if (!cartitem) {
             window.location.replace('http://127.0.0.1:5500/shop.html')
         } else {
@@ -269,15 +276,18 @@
                 return false;
             }
 
-            localStorage.clear()
+            let randomId = Math.floor(Math.random() * 50000)
             alert('Your order will arrive within 3 business days. \nNow you will be sent to home page')
-            order.push({ name: name, email: email, phoneNumber: phoneNumber, cart: cartitem, });
-            let orderStr = JSON.stringify(order)
+            orders.push({id:randomId, customer_name: name,address:address, customer_email: email, customer_phoneNumber: phoneNumber, customer_cart: cartitem});
+            let orderStr = JSON.stringify(orders)
             window.localStorage.setItem('orders', orderStr)
+            
+            let cartStr = JSON.stringify([])
+            window.localStorage.setItem('cart', cartStr)
             window.location.replace('http://127.0.0.1:5500/shop.html')
         })
 
- 
+
 
     </script>
 </body>

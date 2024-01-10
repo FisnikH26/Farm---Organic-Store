@@ -1,8 +1,9 @@
-export default function Navbar(currentPage) {
+export default function Navbar() {
+  let user = JSON.parse(window.localStorage.getItem("loggedInUser")); 
   let content = `<nav class="navbar navbar-expand-lg bg-body-tertiary border border-bottom py-4 fw-bold fs-5">
             <div class="container">
                 <a class="navbar-brand" href="#">
-                    <img src="./assets/img/farm.png" alt="" width="100px" title="${currentPage}">
+                    <img src="./assets/img/farm.png" alt="" width="100px" >
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -20,7 +21,24 @@ export default function Navbar(currentPage) {
                         <li class="nav-item">
                             <a class="nav-link fw-bold" href="/shop.html">Shop</a>
                         </li>
+                        ${user.length ? `<li class="nav-item">
+                                                <a class="nav-link fw-bold" href="/create_blog_post.html">Create a blog post</a>
+                                            </li>`:""
+                        }
+                        ${user.length && user[0].admin == true ? `<li class="nav-item">
+                                                <a class="nav-link fw-bold" href="/dashboard.html">Dashboard</a>
+                                            </li>`:""
+                        }
                     </ul>
+                    <div>
+                        ${
+                          user.length
+                            ? `<button class="btn btn-danger" onclick="logOut()">Log Out</button>`
+                            : 
+                            `<a href="/sign_in.html" class="btn btn-info">Sign in</a> 
+                            <a href="/log_in.html" class="btn btn-dark">Log in</a>`
+                        }
+                    </div>
                     ${
                       window.location.pathname == "/shop.html"
                         ? `<div class="d-flex">
@@ -53,6 +71,5 @@ export default function Navbar(currentPage) {
             </div>
         </nav>`;
 
-        
   return content;
 }

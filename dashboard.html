@@ -37,14 +37,15 @@
 
         </div>
 
-        <div id="Orders" class="tabcontent"> 
-            <table class="table table-hover table-striped mt-3">
+        <div id="Orders" class="tabcontent">
+            <table class="table table-hover table-dark table-striped mt-3">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Cart</th>
                     </tr>
                 </thead>
                 <tbody class="ordersContainer">
@@ -111,7 +112,7 @@
                                     </div>
                                 </div>
                                 <div>
-                                    <button class="btn btn-danger fa-solid fa-xmark" onclick=removeItem(${id})>
+                                    <button class="btn btn-danger fa-solid fa-trash" onclick=removeItem(${id})>
                                     </button>
                                 </div>
                             </li>`
@@ -124,17 +125,27 @@
             let ordersContainer = document.querySelector('.ordersContainer')
             let orders = JSON.parse(localStorage.getItem('orders'))
 
-            orders.map(order => {
-                const { name, email, cart, phoneNumber } = order
-                const { amount } = cart[0]
+            orders.map((order, i) => {
+                const { customer_name, customer_email, customer_cart, customer_phoneNumber, customer_address } = order
+
 
                 return (
                     ordersContainer.innerHTML += `<tr>
-                                                        <td scope="col">1</td>
-                                                        <td scope="col">${name}</td>
-                                                        <td scope="col">${email}</td>
-                                                        <td scope="col">${phoneNumber}</td>
-                                                        <td scope="col">Amount ${amount}</td>
+                                                        <td>${i + 1}</td>
+                                                        <td>${customer_name}</td>
+                                                        <td>${customer_email}</td>
+                                                        <td>${customer_phoneNumber}</td>
+                                                        <td>${customer_cart.map((cart => (
+                                                                        `<div class="d-flex gap-1">
+                                                                            <p>${cart.name}</p>
+                                                                            <p>(${cart.amount}${cart.category !== "bread" ? "kg" : ""})</p>
+                                                                            <span>-</span>
+                                                                            <p>$${cart.price * cart.amount}</p>
+                                                                        </div>`
+                                                                    )
+                                                                ))
+                                                            }
+                                                        </td>
                                                     </tr>`
                 )
             })
