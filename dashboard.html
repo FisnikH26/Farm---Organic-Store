@@ -14,7 +14,9 @@
 </head>
 
 <body>
-
+    <header class="mt-3 ms-3">
+        <a href="http://127.0.0.1:5500/" class="btn btn-dark">Go back to Home</a>
+    </header>
 
 
 
@@ -26,8 +28,18 @@
 
     <div class="content mx-auto">
         <div id="Users" class="tabcontent">
-            <h3>Users</h3>
-            <p>Users is the capital city of England.</p>
+            <table class="table table-hover table-dark table-striped-columns mt-3">
+                <thead>
+                    <tr class="text-center">
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>password</th>
+                    </tr>
+                </thead>
+                <tbody class="usersContainer">
+                </tbody>
+            </table>
         </div>
 
         <div id="Blog" class="tabcontent">
@@ -40,12 +52,12 @@
         <div id="Orders" class="tabcontent">
             <table class="table table-hover table-dark table-striped mt-3">
                 <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Phone</th>
-                        <th>Cart</th>
+                    <tr >
+                        <th >#</th>
+                        <th >Name</th>
+                        <th >Email</th>
+                        <th >Phone</th>
+                        <th >Cart</th>
                     </tr>
                 </thead>
                 <tbody class="ordersContainer">
@@ -53,7 +65,6 @@
             </table>
         </div>
     </div>
-
 
 
 
@@ -87,7 +98,7 @@
             document.getElementById(tabName).classList.add("active")
         }
 
-        openTab('Orders')
+        openTab('Users')
 
 
 
@@ -112,7 +123,7 @@
                                     </div>
                                 </div>
                                 <div>
-                                    <button class="btn btn-danger fa-solid fa-trash" onclick=removeItem(${id})>
+                                    <button class="btn btn-danger fa-solid fa-trash" onclick=removeItem("https://658b1777ba789a9622386cc7.mockapi.io/farm/v1/blogs/",${id})>
                                     </button>
                                 </div>
                             </li>`
@@ -128,39 +139,90 @@
             orders.map((order, i) => {
                 const { customer_name, customer_email, customer_cart, customer_phoneNumber, customer_address } = order
 
-
                 return (
                     ordersContainer.innerHTML += `<tr>
-                                                        <td>${i + 1}</td>
-                                                        <td>${customer_name}</td>
-                                                        <td>${customer_email}</td>
-                                                        <td>${customer_phoneNumber}</td>
-                                                        <td>${customer_cart.map((cart => (
-                                                                        `<div class="d-flex gap-1">
-                                                                            <p>${cart.name}</p>
-                                                                            <p>(${cart.amount}${cart.category !== "bread" ? "kg" : ""})</p>
-                                                                            <span>-</span>
-                                                                            <p>$${cart.price * cart.amount}</p>
-                                                                        </div>`
-                                                                    )
-                                                                ))
-                                                            }
-                                                        </td>
+                                                     <td>${i + 1}</td>
+                                                     <td>${customer_name}</td>
+                                                     <td>${customer_email}</td>
+                                                     <td>${customer_phoneNumber}</td>
+                                                     <td>  
+                                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#${customer_name}-s_cart">
+                                                            Show cart
+                                                        </button>
+                                                        <div class="modal fade" id="${customer_name}-s_cart" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                                            aria-hidden="true">
+                                                            <div class="modal-dialog">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h1 class="modal-title text-dark fs-5" id="exampleModalLabel">${customer_name}'s cart</h1>
+                                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                    </div>
+                                                                    <div class="modal-body text-dark"> 
+                                                                        <p class="text-dark">${name}</p>  
+                                                                        <ul class="nav flex-column">
+                                                                            ${customer_cart.map((item, i) => {
+                                                                                return `<li>Pruduct: ${item.name}</li>
+                                                                                        <li>Amount: ${item.amount}</li>
+                                                                                        <li>Price: ${item.price}</li>
+                                                                                        <li>Total Price: ${item.price * item.amount}</li>
+                                                                                        <br>`
+                                                                            }).join("")}
+                                                                        </ul>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                     </td>
                                                     </tr>`
                 )
             })
         }
-        const removeItem = (id) => {
-            fetch('https://658b1777ba789a9622386cc7.mockapi.io/farm/v1/blogs/' + id, {
+        const users = async () => {
+            let usersContainer = document.querySelector('.usersContainer')
+            await fetch(`http://localhost:3030/users`)
+                .then(res => res.json())
+                .then(data => {
+                    data.map((user, i) => {
+                        const { id, name, email, password } = user
+
+                        return (
+                            usersContainer.innerHTML += `<tr class="text-center">
+                                                            <td>${i + 1}</td>
+                                                            <td>${name}</td>
+                                                            <td>${email}</td>
+                                                            <td>${hash(password)}</td>  
+                                                        </tr>`
+                        )
+                    })
+                })
+        }
+
+
+        const removeItem = async (url, id) => {
+            await fetch(url + id, {
                 method: 'DELETE',
             })
                 .then(res => res.json())
-                .then(data => console.log(data))
+                .then(data => { return data }
+                )
         }
+        function hash(pass) {
+            let newPass = pass.split("")
+            
+
+            let hashedPadd = newPass.map(item => (
+                item = "*"
+            )).join("")
+
+            return hashedPadd
+        }
+        users()
         blogs()
         orders()
-        const products = () => { }
-        const users = () => { }
+
+
     </script>
 
 </body>
