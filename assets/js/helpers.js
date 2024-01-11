@@ -20,18 +20,14 @@ const totalPrice = (elementClass) => {
     total += item.price * item.amount;
   });
 
-  document.querySelector(`.${elementClass}`).innerHTML = "$ " + total;
-};
-
+  return total
+}; 
 const logIn = async (name, email, admin) => {
   loggedInUser = [{ name: name, admin: admin, email: email }];
   window.localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
-
 };
 const logOut = () => {
   loggedInUser = [];
   window.localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
-  window.location.reload()
-
-  console.log("logged out");
+  window.location.reload();
 };

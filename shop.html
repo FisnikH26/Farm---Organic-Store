@@ -19,56 +19,8 @@
 </head>
 
 <body>
-    <header> 
-        <nav class="navbar navbar-expand-lg bg-body-tertiary border border-bottom py-4 fw-bold fs-5">
-            <div class="container">
-                <a class="navbar-brand" href="#">
-                    <img src="./assets/img/farm.png" alt="" width="100px" >
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item" >
-                            <a class="nav-link fw-bold" href="/">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link fw-bold" href="/blog.html">Blog</a>
-                        </li> 
-                        <li class="nav-item">
-                            <a class="nav-link fw-bold" href="/shop.html">Shop</a>
-                        </li>
-                    </ul>
-                     <div class="d-flex">
-                    <div class="position-relative">
-                        <button class="btn btn-cart">
-                            <i class="fa-solid fa-cart-shopping"></i>
-                            <sup class="fw-bold text-dark totalProducts">0</sup>
-                        </button>
-                        <div
-                            class="cart-container py-3 border-bottom bg-white border border-dark rounded position-absolute ">
-                            <div class="container">
-                                <div class="border-bottom">
-                                    <p class="cartAmount fs-6 mb-0">IN CART: 0 PRODUCTS</p>
-                                    <p class="total-price fw-bold fs-6 mb-0">TOTAL PRICE: $0</p>
-                                </div>
-                                <div id="cart" class="d-flex flex-column py-3">
+    <header>
 
-                                </div>
-                                <div class=" border-top pt-2">
-                                    <a href="/checkout.html"
-                                        class="text-decoration-none btn btn-primary w-100 text-center">Checkout</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> 
-                </div>
-            </div>
-        </nav>
     </header>
     <section class="banner d-flex align-items-center justify-content-center">
         <h3 class="position-solute banner-title text-white">Shop</h3>
@@ -85,7 +37,50 @@
         <div class="container">
 
             <div class="row">
-                <div class="col-lg-3">
+
+                <div class="col-lg-3 ">
+                    <div class="filter-price mb-5">
+                        <h5 class="border-bottom pb-3 font-poppins fw-semibold">Filter by price</h5>
+                        <label for="priceRange" class="form-label">Price: <b id="price-range-value">$50</b> </label>
+                        <input type="range" class="form-range" min="0" max="100" id="priceRange">
+                        <button id="filterPriceForm" class="btn btn-warning px-4">Filter</button>
+
+                    </div>
+                    <div class="filter-category mb-5">
+                        <h5 class="border-bottom pb-3 font-poppins fw-semibold">Filter by category</h5>
+                        <form action="" id="categoryFilter" name="filter_by_category">
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="category" value="all"
+                                    id="flexRadioDefault1" checked>
+                                <label class="form-check-label fw-semibold" for="flexRadioDefault1">
+                                    All
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="category" value="fruit"
+                                    id="fruitRadio">
+                                <label class="form-check-label fw-semibold" for="fruitRadio">
+                                    Fruit
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="category" value="vegetable"
+                                    id="vegetableRadio">
+                                <label class="form-check-label fw-semibold" for="vegetableRadio">
+                                    Vegetable
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="category" value="bread"
+                                    id="breadRadio">
+                                <label class="form-check-label fw-semibold" for="breadRadio">
+                                    Bread
+                                </label>
+                            </div>
+                        </form>
+                    </div>
+
                     <div class="popular-products">
                         <h5 class="border-bottom pb-3 font-poppins fw-semibold">POPULAR PRODUCTS</h5>
                         <div class="d-flex align-items-center gap-4">
@@ -200,12 +195,11 @@
         </div>
     </footer>
     <script src="/assets/js/helpers.js"></script>
-    <script src="/assets/js/cart.js"></script>
     <script type="module">
         import Navbar from '/assets/components/Navbar.js'
-        
-        // document.querySelector('header').innerHTML = Navbar()
-        
+
+        document.querySelector('header').innerHTML = Navbar()
+
         let products;
         let sortProducts = document.getElementById('sortProducts')
         sortProducts.addEventListener('change', () => {
@@ -227,7 +221,7 @@
                     products = data
                 })
         }
-        function displayProducts() {
+        function displayProducts(products) {
             products.map(product => {
                 const { id, img, name, price } = product
                 return (
@@ -244,55 +238,71 @@
                                         </div>
                                     </div>
                                 </div>`
-                ) 
+                )
             })
         }
         getProduct()
-      
-
-       
-        
-        function displayCartItems() {
-            let items = JSON.parse(localStorage.getItem('cart'))
-
-            let cartdiv = document.getElementById('cart')
-            let cardAmount = document.querySelector('.cartAmount')
-            cartdiv.innerHTML = ''
-            items.forEach((cartitem, i) => {
-                cartdiv.innerHTML += `<div class="cart-items d-flex align-items-center"> 
-                                        <div class="img">
-                                                <img src="${cartitem.img}" width="70px" alt="">
-                                            </div>
-                                            <div>
-                                                <h5>${cartitem.name}</h5>
-                                                <button class="btn btn-danger mb-2" onclick="removeFromCart(${i})"><small>Remove item</small></button> 
-                                                <div class="d-flex align-items-center justify-content-between"> 
-                                                    <button class="btn btn-warning " onclick="decProductAmount(${i})">-</button>
-                                                    <span class="amount-of-${cartitem.name} px-2">${cartitem.amount}</span>
-                                                    <button class="btn btn-success" onclick="incProductAmount(${i})">+</button>
-                                                    <span class="fw-bold price-of-${cartitem.name} ps-2" price="${cartitem.price}">$${cartitem.price}</span> 
-                                                </div>
-                                            </div>
-                                        </div>`
-            })
-            document.querySelector('.totalProducts').innerHTML = `${cart.length ? cart.length : "0"}`
-            cardAmount.innerHTML = `IN CART: ${cart.length} PRODUCTS`
 
 
+        const filterPriceForm = document.querySelector("#filterPriceForm");
+        const value = document.querySelector("#price-range-value");
+        const priceRange = document.querySelector("#priceRange");
+        priceRange.addEventListener("input", (event) => {
+            value.textContent = "$" + event.target.value;
+        });
+        filterPriceForm.addEventListener('click', () => {
+            let sortedbyPrice = compareNumbers()
+            document.querySelector('#product').innerHTML = ``
+            displayProducts(sortedbyPrice)
+        })
+        function compareNumbers() {
+            let priceArr = []
+            let pricevalue = Number(priceRange.value)
+            for (let i = 0; i < products.length; i++) {
+                if (products[i].price <= pricevalue) {
+                    priceArr.push(products[i])
+                }
+
+            }
+            return priceArr
         }
 
-        
+        const categoryFilter = document.querySelector("#categoryFilter");
+        categoryFilter.addEventListener('change', (event) => {
+
+            event.preventDefault();
+            let categoryName = document.forms["categoryFilter"]["category"].value;
+            console.log(categoryName);
+
+            if (categoryName == "all") {
+                document.querySelector('#product').innerHTML = ``
+
+                displayProducts(products)
+
+            } else {
+                let filterbycategory = products.filter(item => item.category == categoryName)
+                document.querySelector('#product').innerHTML = ``
+
+                displayProducts(filterbycategory)
+            }
+
+        }
+        )
+
+
 
         document.querySelector('.btn-cart').addEventListener('click', () => {
-            document.querySelector('.cart-container').classList.toggle('active') 
+            document.querySelector('.cart-container').classList.toggle('active')
         })
 
         setTimeout(() => {
-            displayProducts()
-             
+            displayProducts(products)
+            let totalCartPrice = totalPrice();
+            document.querySelector(`.total-price`).innerHTML = totalCartPrice;
 
         }, 1000)
     </script>
+    <script src="/assets/js/cart.js"></script>
 </body>
 
 </html>

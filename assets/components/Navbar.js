@@ -30,43 +30,44 @@ export default function Navbar() {
                                             </li>`:""
                         }
                     </ul>
-                    <div>
-                        ${
-                          user.length
-                            ? `<button class="btn btn-danger" onclick="logOut()">Log Out</button>`
-                            : 
-                            `<a href="/sign_in.html" class="btn btn-info">Sign in</a> 
-                            <a href="/log_in.html" class="btn btn-dark">Log in</a>`
-                        }
-                    </div>
+                    
+                  ${
+                    window.location.pathname == "/shop.html"
+                      ? `<div class="d-flex">
+                  <div class="position-relative">
+                      <button class="btn btn-cart">
+                          <i class="fa-solid fa-cart-shopping"></i>
+                          <sup class="fw-bold text-dark totalProducts">0</sup>
+                      </button>
+                      <div
+                          class="cart-container py-3 border-bottom bg-white border border-dark rounded position-absolute ">
+                          <div class="container">
+                              <div class="border-bottom">
+                                  <p class="cartAmount fs-6 mb-0">IN CART: 0 PRODUCTS</p>
+                                  <p class="fw-bold fs-6 mb-0">TOTAL PRICE: $<span class="total-price">0</span> </p>
+                              </div>
+                              <div id="cart" class="d-flex flex-column py-3">
+                                      <h4>No Products in cart</h4>
+                              </div>
+                              <div class=" border-top pt-2">
+                                  <a href="/checkout.html"
+                                      class="text-decoration-none btn btn-primary w-100 text-center">Checkout</a>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>`
+                      : " "
+                  }
+                  <div>
                     ${
-                      window.location.pathname == "/shop.html"
-                        ? `<div class="d-flex">
-                    <div class="position-relative">
-                        <button class="btn btn-cart">
-                            <i class="fa-solid fa-cart-shopping"></i>
-                            <sup class="fw-bold text-dark totalProducts">0</sup>
-                        </button>
-                        <div
-                            class="cart-container py-3 border-bottom bg-white border border-dark rounded position-absolute ">
-                            <div class="container">
-                                <div class="border-bottom">
-                                    <p class="cartAmount fs-6 mb-0">IN CART: 0 PRODUCTS</p>
-                                    <p class="total-price fw-bold fs-6 mb-0">TOTAL PRICE: $0</p>
-                                </div>
-                                <div id="cart" class="d-flex flex-column py-3">
-
-                                </div>
-                                <div class=" border-top pt-2">
-                                    <a href="/checkout.html"
-                                        class="text-decoration-none btn btn-primary w-100 text-center">Checkout</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>`
-                        : " "
-                    }
+                        user.length
+                          ? `<button class="btn btn-danger" onclick="logOut()">Log Out</button>`
+                          : 
+                          `<a href="/sign_in.html" class="btn btn-info">Sign in</a> 
+                          <a href="/log_in.html" class="btn btn-dark">Log in</a>`
+                      }
+                  </div>
                 </div>
             </div>
         </nav>`;

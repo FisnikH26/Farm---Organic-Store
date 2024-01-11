@@ -1,0 +1,124 @@
+{
+  "users": [
+    {
+      "id": 8425,
+      "name": "Fisnik",
+      "email": "test2@live.com",
+      "password": "admin",
+      "admin": true
+    },
+    {
+      "id": 4156,
+      "name": "Keyboard",
+      "email": "test@example.com",
+      "password": "keyboard",
+      "admin": false
+    },
+    {
+      "id": 2835,
+      "name": "piejs",
+      "email": "asd@asda.com",
+      "password": "sdfsdf",
+      "admin": false
+    },
+    {
+      "id": 9595,
+      "name": "john",
+      "email": "john@live.com",
+      "password": "johndoe",
+      "admin": false
+    },
+    {
+      "id": 6071,
+      "name": "jessica",
+      "email": "jessica@test.com",
+      "password": "jessica",
+      "admin": false
+    },
+    {
+      "id": 3662,
+      "name": "kasandra",
+      "email": "kasi@test.com",
+      "password": "noname",
+      "admin": false
+    },
+    {
+      "id": 2998,
+      "name": "Fisnik",
+      "email": "test@ex.com",
+      "password": "testtest",
+      "admin": false
+    },
+    {
+      "id": 1357,
+      "name": "asd",
+      "email": "john@livse.com",
+      "password": "adasdads",
+      "admin": false
+    },
+    {
+      "id": 8675,
+      "name": "Keyboard",
+      "email": "test2@sssss.com",
+      "password": "testtest",
+      "admin": false
+    },
+    {
+      "id": 5105,
+      "name": "Fisnik",
+      "email": "asd@assaesda.com",
+      "password": "testest",
+      "admin": false
+    },
+    {
+      "id": 2712,
+      "name": "alba",
+      "email": "alba@test.com",
+      "password": "albaalba",
+      "admin": false
+    },
+    {
+      "id": 3281,
+      "name": "Gabrial",
+      "email": "Gab@test.com",
+      "password": "gab123",
+      "admin": true
+    }
+  ],
+  "orders": [
+    {
+      "id": 16905,
+      "customer_name": "Keyboard",
+      "address": "asd",
+      "customer_email": "fisi@hotmail.com",
+      "customer_phoneNumber": "13245678978",
+      "customer_cart": [
+        {
+          "id": "2",
+          "name": "Patatoes",
+          "category": "vegetable",
+          "img": "https://livedemo00.template-help.com/wt_prod-10492/images/product-2-191x132.png",
+          "price": 19,
+          "amount": 4
+        },
+        {
+          "id": "3",
+          "name": "Carrots",
+          "category": "vegetable",
+          "img": "https://livedemo00.template-help.com/wt_prod-10492/images/product-3-238x158.png",
+          "price": 30,
+          "amount": 11
+        },
+        {
+          "id": "1",
+          "name": "Banana",
+          "category": "fruit",
+          "img": "https://livedemo00.template-help.com/wt_prod-10492/images/product-1-220x160.png",
+          "price": 54,
+          "amount": 1
+        }
+      ],
+      "totalCartPrice": 460
+    }
+  ]
+}
