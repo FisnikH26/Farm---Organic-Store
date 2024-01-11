@@ -1,4 +1,0 @@
-[1] ajoute Log in et out
-[2] faire le list de utilisateurs en dashboard file
-[3] faire create a blog post option
-[4] ajoute le fitre en shop
