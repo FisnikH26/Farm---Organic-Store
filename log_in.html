@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <form class="row g-3 mx-auto" name="sign_in_form" style="width: 500px;">
+    <form class="row g-3 my-5 mx-auto" name="sign_in_form" style="width: 500px;">
         <div class="col-md-12">
             <label for="email" class="form-label">Email</label>
             <input type="email" class="form-control" id="email" placeholder="Email">
@@ -28,7 +28,7 @@
             </div>
         </div>
         <div class="col-12">
-            <button class="btn btn-primary" type="submit">Submit form</button>
+            <button class="btn btn-primary" type="submit">Log in</button>
         </div>
     </form>
 
@@ -67,7 +67,7 @@
                         printError("passwordErr", "Your password is wrong", "text-danger fw-semibold");
                     }else{
                         
-                        logIn(data[0].name, data[0].email, data[0].admin)
+                        logIn(data[0].id,data[0].name, data[0].email, data[0].admin)
                         window.location.replace('http://127.0.0.1:5500/')
                     }
 

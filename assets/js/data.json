@@ -2,87 +2,45 @@
   "users": [
     {
       "id": 8425,
-      "name": "Fisnik",
+      "name": "Fisnik Hetemi",
       "email": "test2@live.com",
       "password": "admin",
       "admin": true
     },
     {
-      "id": 4156,
-      "name": "Keyboard",
-      "email": "test@example.com",
-      "password": "keyboard",
+      "id": 1745,
+      "name": "Gabriel Barbosa",
+      "email": "gab@bar.com",
+      "password": "brazil",
       "admin": false
     },
     {
-      "id": 2835,
-      "name": "piejs",
-      "email": "asd@asda.com",
-      "password": "sdfsdf",
+      "id": 1868,
+      "name": "Gabriel Fisteku",
+      "email": "test32@live.com",
+      "password": "finsik",
       "admin": false
     },
     {
-      "id": 9595,
-      "name": "john",
-      "email": "john@live.com",
-      "password": "johndoe",
+      "id": 9515,
+      "name": "Gabriel Fisteku",
+      "email": "test3@example.com",
+      "password": "asdasdasd",
       "admin": false
     },
     {
-      "id": 6071,
-      "name": "jessica",
-      "email": "jessica@test.com",
-      "password": "jessica",
+      "id": 8872,
+      "name": "John Doe",
+      "email": "jondoe@live.com",
+      "password": "john1",
       "admin": false
     },
     {
-      "id": 3662,
-      "name": "kasandra",
-      "email": "kasi@test.com",
-      "password": "noname",
+      "id": 4481,
+      "name": "Filan Fisteku",
+      "email": "filan@example.com",
+      "password": "filan",
       "admin": false
-    },
-    {
-      "id": 2998,
-      "name": "Fisnik",
-      "email": "test@ex.com",
-      "password": "testtest",
-      "admin": false
-    },
-    {
-      "id": 1357,
-      "name": "asd",
-      "email": "john@livse.com",
-      "password": "adasdads",
-      "admin": false
-    },
-    {
-      "id": 8675,
-      "name": "Keyboard",
-      "email": "test2@sssss.com",
-      "password": "testtest",
-      "admin": false
-    },
-    {
-      "id": 5105,
-      "name": "Fisnik",
-      "email": "asd@assaesda.com",
-      "password": "testest",
-      "admin": false
-    },
-    {
-      "id": 2712,
-      "name": "alba",
-      "email": "alba@test.com",
-      "password": "albaalba",
-      "admin": false
-    },
-    {
-      "id": 3281,
-      "name": "Gabrial",
-      "email": "Gab@test.com",
-      "password": "gab123",
-      "admin": true
     }
   ],
   "orders": [
@@ -119,6 +77,58 @@
         }
       ],
       "totalCartPrice": 460
+    },
+    {
+      "id": 47250,
+      "customer_name": "Fisnik",
+      "address": "Ferizaj, Kosova",
+      "customer_email": "fisi@hotmail.com",
+      "customer_phoneNumber": "13245678978",
+      "customer_cart": [
+        {
+          "id": "1",
+          "name": "Banana",
+          "category": "fruit",
+          "img": "https://livedemo00.template-help.com/wt_prod-10492/images/product-1-220x160.png",
+          "price": 54,
+          "amount": 5
+        },
+        {
+          "id": "4",
+          "name": "Bread",
+          "category": "bread",
+          "img": "https://livedemo00.template-help.com/wt_prod-10492/images/product-4-204x125.png",
+          "price": 16,
+          "amount": 6
+        }
+      ],
+      "totalCartPrice": 366
+    },
+    {
+      "id": 23068,
+      "customer_name": "Fisnik",
+      "address": "Ferizaj, Kosova",
+      "customer_email": "john@live.com",
+      "customer_phoneNumber": "044123456",
+      "customer_cart": [
+        {
+          "id": "1",
+          "name": "Banana",
+          "category": "fruit",
+          "img": "https://livedemo00.template-help.com/wt_prod-10492/images/product-1-220x160.png",
+          "price": 54,
+          "amount": 3
+        },
+        {
+          "id": "4",
+          "name": "Bread",
+          "category": "bread",
+          "img": "https://livedemo00.template-help.com/wt_prod-10492/images/product-4-204x125.png",
+          "price": 16,
+          "amount": 1
+        }
+      ],
+      "totalCartPrice": 178
     }
   ]
 }

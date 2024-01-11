@@ -7,6 +7,8 @@ export default async function blogDetails(div, id) {
                     div.innerHTML = `<div class="d-flex gap-3 align-items-center fw-semibold">
                         <p class="m-0">ORGANIC FOOD</p> 
                         <span> | </span> 
+                        <p class="m-0 text-muted">${blog.author}</p>
+                        <span> | </span> 
                         <p class="m-0 text-muted">${blog.postAt}</p>
                     </div>
                     <div class="title my-4">
@@ -16,6 +18,7 @@ export default async function blogDetails(div, id) {
                         <img src="${blog.img}" width="100%" height="500px" alt="">
                     </div>
                     <div class="body">
+                    
                     ${blog.body}
                     </div>
                 </div>`

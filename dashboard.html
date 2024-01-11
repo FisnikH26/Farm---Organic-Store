@@ -42,11 +42,19 @@
             </table>
         </div>
 
-        <div id="Blog" class="tabcontent">
-            <ul class="nav flex-row mt-3 blogListContainer">
-
-            </ul>
-
+        <div id="Blog" class="tabcontent"> 
+            <table class="table table-hover  table-striped mt-3">
+                <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>Posted</th> 
+                    </tr>
+                </thead>
+                <tbody class="blogListContainer">
+                </tbody>
+            </table>
         </div>
 
         <div id="Orders" class="tabcontent">
@@ -116,24 +124,17 @@
                 .then(res => res.json())
                 .then(data => {
                     data.map(blog => {
-                        const { id, img, title, postAt } = blog
+                        const { id, img, title, postAt, author } = blog
 
                         return (
-                            blogContainer.innerHTML += `<li class="d-flex w-100 justify-content-between gap-2">
-                                <div class="d-flex gap-2">
-                                    <div>
-                                        <img src="${img}" width="100px" alt="${title}">
-                                    </div>
-                                    <div>
-                                        <h6>${title}</h6>
-                                        <p class="date">${postAt}</p>
-                                    </div>
-                                </div>
-                                <div>
-                                    <button class="btn btn-danger fa-solid fa-trash" onclick=removeItem("https://658b1777ba789a9622386cc7.mockapi.io/farm/v1/blogs/",${id})>
-                                    </button>
-                                </div>
-                            </li>`
+                            blogContainer.innerHTML += `<tr>
+                                                            <td>
+                                                                <img src="${img}" alt="${title}" width="70px"/>
+                                                            </td>
+                                                            <td>${title}</td>
+                                                            <td>${author}</td>
+                                                            <td>${postAt}</td> 
+                                                        </tr>`
                         )
                     })
                 })

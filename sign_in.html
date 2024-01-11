@@ -16,9 +16,20 @@
 <body>
     <form class="row g-3 mx-auto" name="sign_in_form" style="width: 500px;">
         <div class="col-md-12">
-            <label for="name" class="form-label">Name</label>
-            <input type="text" class="form-control" id="name" placeholder="Name">
-            <div id="nameErr">
+            <div class="row">
+                <div class="col-md-6">
+
+                    <label for="firstname" class="form-label">FIrst Name</label>
+                    <input type="text" class="form-control" id="firstname" placeholder="First Name">
+                    <div id="firstnameErr">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="lastname" class="form-label">Last Name</label>
+                    <input type="text" class="form-control" id="lastname" placeholder="Last Name">
+                    <div id="lastnameErr">
+                    </div>
+                </div>
             </div>
         </div>
         <div class="col-md-12">
@@ -34,7 +45,7 @@
             </div>
         </div>
         <div class="col-12">
-            <button class="btn btn-primary" type="submit">Submit form</button>
+            <button class="btn btn-primary" type="submit">Sign in</button>
         </div>
     </form>
 
@@ -61,21 +72,35 @@
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
 
-            let name = document.forms["sign_in_form"]["name"].value;
+            let firstname = document.forms["sign_in_form"]["firstname"].value;
+            let lastname = document.forms["sign_in_form"]["lastname"].value;
             let email = document.forms["sign_in_form"]["email"].value;
             let password = document.forms["sign_in_form"]["password"].value;
 
 
-            let nameErr = true;
-            if (name == "") {
-                printError("nameErr", "Please enter your name", "text-danger fw-semibold");
+            let firstnameErr = true;
+            if (firstname == "") {
+                printError("firstnameErr", "Please enter your firstname", "text-danger fw-semibold");
             } else {
                 let regex = /^[a-zA-Z\s]+$/;
-                if (regex.test(name) === false) {
-                    printError("nameErr", "Name must only contain letters", "text-danger fw-semibold");
+                if (regex.test(firstname) === false) {
+                    printError("firstnameErr", "firstname must only contain letters", "text-danger fw-semibold");
                 } else {
-                    printError("nameErr", "Looks good", "text-success fw-semibold");
-                    nameErr = false;
+                    printError("firstnameErr", "Looks good", "text-success fw-semibold");
+                    firstnameErr = false;
+                }
+            }
+
+            let lastnameErr = true;
+            if (lastname == "") {
+                printError("lastnameErr", "Please enter your lastname", "text-danger fw-semibold");
+            } else {
+                let regex = /^[a-zA-Z\s]+$/;
+                if (regex.test(lastname) === false) {
+                    printError("lastnameErr", "lastname must only contain letters", "text-danger fw-semibold");
+                } else {
+                    printError("lastnameErr", "Looks good", "text-success fw-semibold");
+                    lastnameErr = false;
                 }
             }
 
@@ -110,7 +135,7 @@
                 }
             }
 
-            if (nameErr == false && emailErr == false && passwordErr == false) {
+            if (firstnameErr == false && lastnameErr == false && emailErr == false && passwordErr == false) {
                 await fetch('http://localhost:3030/users?email=' + email)
                     .then(res => res.json())
                     .then(data => {
@@ -119,8 +144,7 @@
                             printError("emailErr", "An account with this email exists", "text-danger fw-semibold");
                             return false
                         } else {
-                            addUser(name, email, password)
-                            console.log(data);
+                            addUser(firstname,lastname, email, password)
 
                         }
                     })
@@ -129,12 +153,12 @@
         })
 
 
-        async function addUser(name, email, password) {
+        async function addUser(firstname,lastname, email, password) {
 
 
             let newUser = {
                 id: Math.floor(Math.random() * 10000),
-                name: name,
+                name: firstname + " " + lastname,
                 email: email,
                 password: password,
                 admin: false
@@ -147,7 +171,7 @@
                 },
                 body: JSON.stringify(newUser)
             })
-            logIn(newUser.name, newUser.email, newUser.admin)
+            logIn(newUser.id, newUser.name, newUser.email, newUser.admin)
             window.location.replace("http://127.0.0.1:5500/")
             return response.json()
 
