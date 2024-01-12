@@ -1,5 +1,6 @@
 export default function Navbar() {
   let user = JSON.parse(window.localStorage.getItem("loggedInUser")); 
+  console.log(user);
   let content = `<nav class="navbar navbar-expand-lg bg-body-tertiary border border-bottom py-4 fw-bold fs-5">
             <div class="container">
                 <a class="navbar-brand" href="#">
@@ -21,11 +22,8 @@ export default function Navbar() {
                         <li class="nav-item">
                             <a class="nav-link fw-bold" href="/shop.html">Shop</a>
                         </li>
-                        ${user.length ? `<li class="nav-item">
-                                                <a class="nav-link fw-bold" href="/create_blog_post.html">Create a blog post</a>
-                                            </li>`:""
-                        }
-                        ${user.length && user[0].admin == true ? `<li class="nav-item">
+                        
+                        ${user.id && user.admin == true ? `<li class="nav-item">
                                                 <a class="nav-link fw-bold" href="/dashboard.html">Dashboard</a>
                                             </li>`:""
                         }
@@ -61,8 +59,27 @@ export default function Navbar() {
                   }
                   <div>
                     ${
-                        user.length
-                          ? `<button class="btn btn-danger" onclick="logOut()">Log Out</button>`
+                        user.id
+                          ? `<div>
+                                    
+                                    <ul class="nav ">
+                                     <li class="nav-item dropdown">
+                                        <a class="nav-link text-dark dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        ${user.name}
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li class="nav-item">
+                                                <a class="nav-link text-dark fw-bold" href="/create_blog_post.html">Create a blog post</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link text-dark fw-bold" href="/profile.html?author=${user.name}">My Blogs</a>
+                                            </li>
+                                            <li><hr class="dropdown-divider"></li>
+                                            <li class="text-center px-3"><button class="btn btn-outline-danger w-100" onclick="logOut()">Log Out</button></li>
+                                        </ul>
+                                    </li> 
+                                    </ul>
+                            </div>`
                           : 
                           `<a href="/sign_in.html" class="btn btn-info">Sign in</a> 
                           <a href="/log_in.html" class="btn btn-dark">Log in</a>`
@@ -74,3 +91,7 @@ export default function Navbar() {
 
   return content;
 }
+
+
+
+{}

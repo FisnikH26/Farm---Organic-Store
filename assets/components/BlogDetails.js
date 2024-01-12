@@ -7,7 +7,11 @@ export default async function blogDetails(div, id) {
                     div.innerHTML = `<div class="d-flex gap-3 align-items-center fw-semibold">
                         <p class="m-0">ORGANIC FOOD</p> 
                         <span> | </span> 
-                        <p class="m-0 text-muted">${blog.author}</p>
+                        <p class="m-0 text-muted">
+                            <a href="profile.html?author=${blog.author}">
+                                ${blog.author}
+                            </a>
+                        </p>
                         <span> | </span> 
                         <p class="m-0 text-muted">${blog.postAt}</p>
                     </div>

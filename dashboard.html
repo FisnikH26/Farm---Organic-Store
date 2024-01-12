@@ -112,7 +112,7 @@
 
         let adminActive = JSON.parse(localStorage.getItem('loggedInUser'))
 
-        if (!adminActive.length || adminActive[0].admin !== true) {
+        if (!adminActive.id || adminActive.admin !== true) {
             window.location.replace('http://127.0.0.1:5500/index.html')
         } else {
            
