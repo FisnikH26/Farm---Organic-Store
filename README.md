@@ -1,5 +1,5 @@
-***This is my project for Bootcamp modul Javacript***
-
+This is my project for Bootcamp modul Javacript
+===============================================
 This website has a shop and blog page, log in / sign in option
 
 In blogs you can read blog post and if you open your account you can post aswell
