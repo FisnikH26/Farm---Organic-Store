@@ -1,8 +1,10 @@
 This is my project for Bootcamp modul Javacript
 ===============================================
-This website has a shop and blog page, log in / sign in option
+This website has a **shop** and **blog** page, **log in**/ **sign in** option
 
-In blogs you can read blog post and if you open your account you can post aswell
+In 1. blogs 
+        * you can read blog post 
+        * if you open your account you can post aswell
 
 in Shop you can buy fruit, vegetable, and bakery products 
 
