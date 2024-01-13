@@ -26,14 +26,14 @@
         <h3 class="banner-title text-white"></h3>
     </section>
     <div class="container mt-5">
-        <div id="profile" class="row"> 
+        <div id="profile" class="row">
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
 
-    </script>
+        </script>
     <script src="/assets/js/helpers.js"></script>
 
     <script type="module">
@@ -41,18 +41,21 @@
         import Navbar from '/assets/components/Navbar.js'
 
         document.querySelector('header').innerHTML = Navbar("Blog")
-        
+
         const query_string = getQueryStringFromURL(window.location.href)
-        
+
         const params = new URLSearchParams(query_string)
         const profile = document.querySelector("#profile")
         if (params.has('author')) {
             const author = params.get('author')
             Profile(profile, author)
+            let activeUser = JSON.parse(localStorage.getItem('loggedInUser'))
+            let bannerText = activeUser.name == params.get('author') ? "Your Blogs" : params.get('author').split(" ")[0] + "'s Blogs"
+            document.querySelector('.banner-title').innerHTML = bannerText
+        } else {
+            window.location.replace('http://127.0.0.1:5500/blog.html')
         }
-        let activeUser = JSON.parse(localStorage.getItem('loggedInUser'))
-        let bannerText = activeUser.name == params.get('author') ? "Your Blogs" : params.get('author').split(" ")[0] + "'s Blogs"
-        document.querySelector('.banner-title').innerHTML = bannerText
+
 
     </script>
 

@@ -271,8 +271,7 @@
         categoryFilter.addEventListener('change', (event) => {
 
             event.preventDefault();
-            let categoryName = document.forms["categoryFilter"]["category"].value;
-            console.log(categoryName);
+            let categoryName = document.forms["categoryFilter"]["category"].value; 
 
             if (categoryName == "all") {
                 document.querySelector('#product').innerHTML = ``

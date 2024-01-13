@@ -1,10 +1,9 @@
 export default function Navbar() {
   let user = JSON.parse(window.localStorage.getItem("loggedInUser")); 
-  console.log(user);
   let content = `<nav class="navbar navbar-expand-lg bg-body-tertiary border border-bottom py-4 fw-bold fs-5">
             <div class="container">
-                <a class="navbar-brand" href="#">
-                    <img src="./assets/img/farm.png" alt="" width="100px" >
+                <a class="navbar-brand" href="index.html">
+                    <img src="./assets/img/farm.png" alt="logo" width="100px" >
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -23,10 +22,7 @@ export default function Navbar() {
                             <a class="nav-link fw-bold" href="/shop.html">Shop</a>
                         </li>
                         
-                        ${user.id && user.admin == true ? `<li class="nav-item">
-                                                <a class="nav-link fw-bold" href="/dashboard.html">Dashboard</a>
-                                            </li>`:""
-                        }
+                        
                     </ul>
                     
                   ${
@@ -64,8 +60,10 @@ export default function Navbar() {
                                     
                                     <ul class="nav ">
                                      <li class="nav-item dropdown">
-                                        <a class="nav-link text-dark dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        ${user.name}
+                                        <a class="nav-link d-flex align-items-center  text-dark dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <h6 class="mb-0 me-2">${user.name}</h6>
+                                        ${user.admin == true ? "<img src='/assets/img/crown.png' width='20px' />":""}
+                                        ${user.admin == false && user.verified == true ? "<img src='/assets/img/verified.png' width='20px' />":""}
                                         </a>
                                         <ul class="dropdown-menu">
                                             <li class="nav-item">
@@ -74,6 +72,10 @@ export default function Navbar() {
                                             <li class="nav-item">
                                                 <a class="nav-link text-dark fw-bold" href="/profile.html?author=${user.name}">My Blogs</a>
                                             </li>
+                                            ${user.admin == true ? `<li class="nav-item">
+                                                                        <a class="nav-link text-dark fw-bold" href="/dashboard.html">Dashboard</a>
+                                                                    </li>`:""
+                                            }
                                             <li><hr class="dropdown-divider"></li>
                                             <li class="text-center px-3"><button class="btn btn-outline-danger w-100" onclick="logOut()">Log Out</button></li>
                                         </ul>
@@ -81,8 +83,8 @@ export default function Navbar() {
                                     </ul>
                             </div>`
                           : 
-                          `<a href="/sign_in.html" class="btn btn-info">Sign in</a> 
-                          <a href="/log_in.html" class="btn btn-dark">Log in</a>`
+                          `<a href="/sign_in.html" class="btn btn-outline-warning">Sign in</a> 
+                          <a href="/log_in.html" class="btn btn-warning ">Log in</a>`
                       }
                   </div>
                 </div>

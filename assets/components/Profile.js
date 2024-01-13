@@ -1,9 +1,7 @@
-export default async function Profile(div, author) {
-    console.log(name);
+export default async function Profile(div, author) { 
     await fetch(`https://658b1777ba789a9622386cc7.mockapi.io/farm/v1/blogs?author=${author}`)
         .then((res) => res.json())
-        .then((data) =>{
-            console.log(data)
+        .then((data) =>{ 
             if(data[0].id){
                 data.map((blog) =>(
                     div.innerHTML += `<div class="col-lg-3 col-md-6 col-sm-12">

@@ -35,6 +35,7 @@
                         <th>Name</th>
                         <th>Email</th>
                         <th>password</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody class="usersContainer">
@@ -42,14 +43,14 @@
             </table>
         </div>
 
-        <div id="Blog" class="tabcontent"> 
+        <div id="Blog" class="tabcontent">
             <table class="table table-hover  table-striped mt-3">
                 <thead>
                     <tr>
                         <th>Image</th>
                         <th>Title</th>
                         <th>Author</th>
-                        <th>Posted</th> 
+                        <th>Posted</th>
                     </tr>
                 </thead>
                 <tbody class="blogListContainer">
@@ -67,6 +68,7 @@
                         <th>Phone</th>
                         <th>Address</th>
                         <th>Cart</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody class="ordersContainer">
@@ -115,9 +117,31 @@
         if (!adminActive.id || adminActive.admin !== true) {
             window.location.replace('http://127.0.0.1:5500/index.html')
         } else {
-           
-        }
 
+        }
+        const users = async () => {
+            let usersContainer = document.querySelector('.usersContainer')
+            await fetch(`http://localhost:3030/users`)
+                .then(res => res.json())
+                .then(data => {
+                    data.map((user, i) => {
+                        const { id, name, email, password } = user
+
+                        return (
+                            usersContainer.innerHTML += `<tr class="text-center">
+                                                            <td>${i + 1}</td>
+                                                            <td>${name}</td>
+                                                            <td>${email}</td>
+                                                            <td>${hash(password)}</td>  
+                                                            <td>
+                                                                <button class="btn btn-primary fa-solid fa-edit" onclick="createModal(${id})"></button>
+                                                                <button class="btn btn-danger fa-solid fa-trash" onclick="removeItem('http://localhost:3030/users/',${id})"></button>
+                                                            </td>
+                                                        </tr>`
+                        )
+                    })
+                })
+        }
         const blogs = async () => {
             let blogContainer = document.querySelector('.blogListContainer')
             await fetch(`https://658b1777ba789a9622386cc7.mockapi.io/farm/v1/blogs`)
@@ -134,19 +158,22 @@
                                                             <td>${title}</td>
                                                             <td>${author}</td>
                                                             <td>${postAt}</td> 
+                                                            <td>
+                                                                <button class="btn btn-danger fa-solid fa-trash" onclick="removeItem('https://658b1777ba789a9622386cc7.mockapi.io/farm/v1/blogs/',${id})"></button>
+                                                                
+                                                                </td> 
                                                         </tr>`
                         )
                     })
                 })
         }
-
         const orders = async () => {
             let ordersContainer = document.querySelector('.ordersContainer')
             await fetch('http://localhost:3030/orders')
                 .then(res => res.json())
                 .then(data => {
                     data.map((order, i) => {
-                        const { customer_name, customer_email, address, customer_cart, customer_phoneNumber, customer_address,totalCartPrice } = order
+                        const { id, customer_name, customer_email, address, customer_cart, customer_phoneNumber, customer_address, totalCartPrice } = order
 
                         return (
                             ordersContainer.innerHTML += `<tr>
@@ -180,13 +207,13 @@
                                                                             </thead>
                                                                             <tbody>
                                                                             ${customer_cart.map((item, i) => {
-                                                                                return `<tr>
+                                return `<tr>
                                                                                             <td>${item.name}</td>
                                                                                             <td>${item.amount} ${item.category !== "bread" ? "kg" : ""}</td>
                                                                                             <td>$${item.price}</td>
                                                                                             <td>$${item.price * item.amount}</td>
                                                                                         </tr>`
-                                                                                }).join("")}
+                            }).join("")}
                                                                             </tbody>
                                                                             <tfoot>
                                                                                <tr>
@@ -206,6 +233,9 @@
                                                             </div>
                                                         </div>
                                                      </td>
+                                                     <td>
+                                                        <button class="btn btn-danger fa-solid fa-trash" onclick="removeItem('http://localhost:3030/orders/',${id})"></button>
+                                                        </td>
                                                     </tr>`
                         )
                     })
@@ -213,49 +243,87 @@
 
 
         }
-        const users = async () => {
-            let usersContainer = document.querySelector('.usersContainer')
-            await fetch(`http://localhost:3030/users`)
-                .then(res => res.json())
-                .then(data => {
-                    data.map((user, i) => {
-                        const { id, name, email, password } = user
 
-                        return (
-                            usersContainer.innerHTML += `<tr class="text-center">
-                                                            <td>${i + 1}</td>
-                                                            <td>${name}</td>
-                                                            <td>${email}</td>
-                                                            <td>${hash(password)}</td>  
-                                                        </tr>`
-                        )
-                    })
-                })
-        }
 
 
         const removeItem = async (url, id) => {
-            await fetch(url + id, {
-                method: 'DELETE',
+            const res = await fetch(url + id, {
+                method: 'DELETE'
             })
-                .then(res => res.json())
-                .then(data => { return data }
-                )
+
+
         }
+        const editItem = async (id) => {
+            let edited_data = getData()
+            const res = await fetch(`http://localhost:3030/users/${id}`,{
+                method:"PATCH",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(edited_data)
+            })
+
+        }
+        const createModal = async (id) => {
+            const res = await fetch(`http://localhost:3030/users/${id}`)
+            let data = await res.json()
+            let modal = document.createElement('div')
+            modal.className = "customModal position-absolute w-100 h-100"
+            modal.innerHTML = ` <div class="user-data bg-white  rounded-3">
+                                        <div class="modal-header border-bottom px-5 pt-3 pb-2">
+                                        <h3>Edit</h3>
+                                        </div>
+                                        <div class="modal-body border-bottom px-5 py-3">
+                                            <form class="editDataForm">
+                                                <div class="input-group mb-3">
+                                                    <span class="input-group-text" id="basic-addon1">Name</span>
+                                                    <input type="text" class="form-control editName" value="${data.name}" aria-label="Name" aria-describedby="basic-addon1">
+                                                </div>
+                                                <div class="input-group mb-3">
+                                                    <span class="input-group-text" id="basic-addon1">Email</span>
+                                                    <input type="email" class="form-control editEmail"  value="${data.email}" aria-label="Email" aria-describedby="basic-addon1">
+                                                </div>
+                                                <div class="input-group mb-3">
+                                                    <span class="input-group-text" id="basic-addon1">Password</span>
+                                                    <input type="password" class="form-control editPassword"  value="${data.password}" aria-label="Password" aria-describedby="basic-addon1">
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer px-5 py-2">
+                                            <button class="btn btn-primary  me-3" onclick="editItem(${id})">Save Changes</button>
+                                            <button class="btn btn-secondary" onclick="removeModal()">Close</button>
+                                        </div>
+                                    </div>`
+
+            document.querySelector("body").appendChild(modal)
+        }
+        function removeModal() {
+            document.querySelector('.customModal').remove()
+        }
+        function getData() {
+                let name = document.querySelector('.editName').value
+                let email = document.querySelector('.editEmail').value
+                let password = document.querySelector('.editPassword').value
+
+               let newData = { name: name, email: email, password: password }
+
+                
+            return newData
+        }
+
         function hash(pass) {
             let newPass = pass.split("")
 
-
-            let hashedPadd = newPass.map(item => (
+            let hashedPass = newPass.map(item => (
                 item = "*"
             )).join("")
 
-            return hashedPadd
+            return hashedPass
         }
 
         users()
-            blogs()
-            orders()
+        blogs()
+        orders()
 
     </script>
 

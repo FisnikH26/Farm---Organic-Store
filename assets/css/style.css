@@ -1,7 +1,7 @@
 :root {
   /* Colors */
-  --olive: rgb(118, 170, 111);
-  --custom-yellow: rgb(233, 218, 93);
+  --olive: #76aa6f;
+  --custom-yellow: #e9da5d;
   --custom-black: rgb(20, 20, 21);
   --custom-gray: rgb(118, 119, 118);
   --custom-light-gray: rgb(225, 225, 225);
@@ -13,8 +13,18 @@
   padding: 0;
   box-sizing: border-box;
 }
-.btn-cart {
+.customModal{
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+.user-data{
+  max-width: 500px;
+  max-height: 500px;
+} 
 .prices span:nth-child(1) {
   color: var(--custom-light-gray);
 }
@@ -358,9 +368,7 @@
 }
 .accordion-body {
   color: var(--custom-gray);
-}
-#blog .card {
-}
+} 
 #blog .card:hover img {
   transform: scale(1.05);
   transition: transform 0.2s linear;

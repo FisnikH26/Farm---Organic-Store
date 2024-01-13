@@ -138,8 +138,7 @@
             if (firstnameErr == false && lastnameErr == false && emailErr == false && passwordErr == false) {
                 await fetch('http://localhost:3030/users?email=' + email)
                     .then(res => res.json())
-                    .then(data => {
-                        console.log(data);
+                    .then(data => { 
                         if (data.length > 0) {
                             printError("emailErr", "An account with this email exists", "text-danger fw-semibold");
                             return false
@@ -161,7 +160,8 @@
                 name: firstname + " " + lastname,
                 email: email,
                 password: password,
-                admin: false
+                admin: false,
+                verified:false
             }
 
             let response = await fetch('http://localhost:3030/users', {
@@ -171,7 +171,7 @@
                 },
                 body: JSON.stringify(newUser)
             })
-            logIn(newUser.id, newUser.name, newUser.email, newUser.admin)
+            logIn(newUser.id, newUser.name, newUser.email, newUser.admin, newUser.verified)
             window.location.replace("http://127.0.0.1:5500/")
             return response.json()
 
