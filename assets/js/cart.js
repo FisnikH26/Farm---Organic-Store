@@ -20,6 +20,22 @@ async function addToCart(id) {
   )
     .then((res) => res.json())
     .then((data) => {
+      for (let i = 0; i < cart.length; i++) {
+        if (cart[i].name == data[0].name) {
+          let alertMsg = document.createElement("div");
+          alertMsg.className =
+            "alert alert-warning position-fixed position-absolute";
+          alertMsg.innerHTML = `<b>${cart[i].name}</b> is already in Shopping Cart`;
+          document.querySelector("body").append(alertMsg);
+
+          setTimeout(() => { 
+            alertMsg.remove();
+        
+            }, 1000);
+
+          return false;
+        }
+      }
       cart.push({
         id: data[0].id,
         name: data[0].name,
@@ -38,7 +54,6 @@ async function addToCart(id) {
       document.querySelector(`.total-price`).innerHTML = totalCartPrice;
     });
 }
-
 function displayCartItems() {
   let items = JSON.parse(localStorage.getItem("cart"));
   let cartdiv = document.getElementById("cart");
@@ -97,6 +112,10 @@ function decProductAmount(id) {
     alertMsg.className = "alert alert-danger position-absolute";
     alertMsg.innerHTML = `You can't have less than one`;
     document.querySelector("body").append(alertMsg);
+    setTimeout(() => { 
+    alertMsg.remove();
+
+    }, 1500);
   } else {
     Object.assign(cart[id].amount, { amount: cart[id].amount-- });
     document.querySelector(`.amount-of-${cart[id].name}`).innerHTML =
