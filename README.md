@@ -1,4 +1,4 @@
-This is my project for Bootcamp modul Javacript
+**This is my project for Bootcamp modul Javacript**
 
 This website has a shop and blog page, log in / sign in option
 
