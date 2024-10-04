@@ -1,8 +1,8 @@
 export default async function Profile(div, author) { 
-    await fetch(`https://658b1777ba789a9622386cc7.mockapi.io/farm/v1/blogs?author=${author}`)
+    await fetch(`http://localhost:3000/blog?author=${author}`)
         .then((res) => res.json())
         .then((data) =>{ 
-            if(data[0].id){
+            if(data.id){
                 data.map((blog) =>(
                     div.innerHTML += `<div class="col-lg-3 col-md-6 col-sm-12">
                     <div class="card border-0 w-100 " style="width: 18rem;">
@@ -21,7 +21,8 @@ export default async function Profile(div, author) {
                 </div>`
                 )); 
             }else{
-                window.location.replace('http://127.0.0.1:5500/blog.html')
+                div.innerHTML = `<h1 class="text-center">There is no blog to show</h1>
+                                <a href="/create_blog_post.html" class="text-center">Create a Blog here</a>`
             }
         })
 }

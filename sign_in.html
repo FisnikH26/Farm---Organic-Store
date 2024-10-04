@@ -136,7 +136,7 @@
             }
 
             if (firstnameErr == false && lastnameErr == false && emailErr == false && passwordErr == false) {
-                await fetch('http://localhost:3030/users?email=' + email)
+                await fetch('http://localhost:3000/users?email=' + email)
                     .then(res => res.json())
                     .then(data => { 
                         if (data.length > 0) {
@@ -164,7 +164,7 @@
                 verified:false
             }
 
-            let response = await fetch('http://localhost:3030/users', {
+            let response = await fetch('http://localhost:3000/users', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

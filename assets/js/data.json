@@ -26,20 +26,28 @@
     },
     {
       "id": "4481",
-      "name": "Filan Fisteku",
+      "name": "Ilan Fisteku",
       "email": "filan@example.com",
       "password": "filan",
+      "admin": false,
+      "verified": false
+    },
+    {
+      "id": 7491,
+      "name": "Homer Simpsons",
+      "email": "homer@live.com",
+      "password": "homer123",
       "admin": false,
       "verified": false
     }
   ],
   "orders": [
     {
-      "id": "47250",
-      "customer_name": "Fisnik",
+      "id": 15973,
+      "customer_name": "Fisnik Hetemi",
       "address": "Ferizaj, Kosova",
-      "customer_email": "fisi@hotmail.com",
-      "customer_phoneNumber": "13245678978",
+      "customer_email": "test2@live.com",
+      "customer_phoneNumber": "044123132",
       "customer_cart": [
         {
           "id": "1",
@@ -47,18 +55,174 @@
           "category": "fruit",
           "img": "https://livedemo00.template-help.com/wt_prod-10492/images/product-1-220x160.png",
           "price": 54,
-          "amount": 5
+          "amount": 1
         },
         {
-          "id": "4",
-          "name": "Bread",
-          "category": "bread",
-          "img": "https://livedemo00.template-help.com/wt_prod-10492/images/product-4-204x125.png",
-          "price": 16,
-          "amount": 6
+          "id": "2",
+          "name": "Patatoes",
+          "category": "vegetable",
+          "img": "https://livedemo00.template-help.com/wt_prod-10492/images/product-2-191x132.png",
+          "price": 19,
+          "amount": 1
         }
       ],
-      "totalCartPrice": 366
+      "totalCartPrice": 73
+    }
+  ],
+  "products": [
+    {
+      "name": "Banana",
+      "img": "https://imgs.search.brave.com/-n5I12nwhIFfmIQSUwn187et4fzVflMJRkhaS3Y1UHk/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zdGF0/aWMudmVjdGVlenku/Y29tL3N5c3RlbS9y/ZXNvdXJjZXMvcHJl/dmlld3MvMDI5LzIw/MC8yNjkvbm9uXzJ4/L2JhbmFuYS10cmFu/c3BhcmVudC1iYWNr/Z3JvdW5kLWZyZWUt/cG5nLnBuZw",
+      "rating": 7,
+      "category": "fruit",
+      "weight": 55,
+      "reviews": {},
+      "price": 54,
+      "id": "1"
+    },
+    {
+      "name": "Patatoes",
+      "img": "https://imgs.search.brave.com/gMa5a3b6hjrLc0pV_Bvjd377jtkdU8XyAKLqrqoJgbw/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zdGF0/aWMudmVjdGVlenku/Y29tL3N5c3RlbS9y/ZXNvdXJjZXMvdGh1/bWJuYWlscy8wNDgv/MDUwLzk2OS9zbWFs/bC9wb3RhdG9lcy1v/bi10cmFuc3BhcmVu/dC1iYWNrZ3JvdW5k/LXBuZy5wbmc",
+      "rating": 5,
+      "category": "vegetable",
+      "weight": 30,
+      "reviews": {},
+      "price": 19,
+      "id": "2"
+    },
+    {
+      "name": "Carrots",
+      "img": "https://imgs.search.brave.com/VFTqmHbXVfAwkZC1PnEAqNOxNQMJ7nDNhaJ4_pv-Md4/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/cG5nbWFydC5jb20v/ZmlsZXMvOC9DYXJy/b3QtVHJhbnNwYXJl/bnQtQmFja2dyb3Vu/ZC5wbmc",
+      "rating": 37,
+      "category": "vegetable",
+      "weight": 88,
+      "reviews": {},
+      "price": 30,
+      "id": "3"
+    },
+    {
+      "name": "Bread",
+      "img": "https://imgs.search.brave.com/qOImgMie_DV6lwJ_x0JRPRa0l_cP_smOgXP5zJPFcmU/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jbGlw/YXJ0LWxpYnJhcnku/Y29tL25ld19nYWxs/ZXJ5LzgtODc1MTNf/c2xpY2VkLWJyZWFk/LWJyZWFkLXdpdGgt/bm8tYmFja2dyb3Vu/ZC5wbmc",
+      "rating": 36,
+      "category": "bread",
+      "weight": 33,
+      "reviews": {},
+      "price": 16,
+      "id": "4"
+    },
+    {
+      "name": "Strawberries",
+      "img": "https://imgs.search.brave.com/ZV5MXeNs7ndfg8sRCwR2_xdLPKvJOoi4TyUNsGs529o/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/cG5nbWFydC5jb20v/ZmlsZXMvMy9TdHJh/d2JlcnJ5LVRyYW5z/cGFyZW50LUJhY2tn/cm91bmQucG5n",
+      "rating": 75,
+      "category": "fruit",
+      "weight": 35,
+      "reviews": {},
+      "price": 28,
+      "id": "5"
+    },
+    {
+      "name": "Cucumber",
+      "img": "https://imgs.search.brave.com/3j8ysUgWv2rmMCEkWcxr19PYD3oDWKK5Eh7apZR72tg/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9wbmdm/cmUuY29tL3dwLWNv/bnRlbnQvdXBsb2Fk/cy9DdWN1bWJlci01/LTEtOTgxeDEwMjQu/cG5n",
+      "rating": 5,
+      "category": "vegetable",
+      "weight": 73,
+      "reviews": {},
+      "price": 14,
+      "id": "6"
+    },
+    {
+      "name": "Pepper",
+      "img": "https://imgs.search.brave.com/djc5Mi10Je9fKqWKXtBcVKsZwWlakQXYPLUFsIP6RAc/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9wbmdp/bWcuY29tL3VwbG9h/ZHMvcGVwcGVyL3Nt/YWxsL3BlcHBlcl9Q/TkczMjUzLnBuZw",
+      "rating": 5,
+      "category": "vegetable",
+      "weight": 26,
+      "reviews": {},
+      "price": 7,
+      "id": "7"
+    },
+    {
+      "name": "Bagels",
+      "img": "https://imgs.search.brave.com/GoWbkPip8XW1WPMne3G1_uE6T6Zvx1ci0MM9yI_30pA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/cG5nbWFydC5jb20v/ZmlsZXMvNS9CYWdl/bHMtUE5HLUZyZWUt/RG93bmxvYWQucG5n",
+      "rating": 62,
+      "category": "bread",
+      "weight": 13,
+      "reviews": {},
+      "price": 15,
+      "id": "8"
+    }
+  ],
+  "blog": [
+    {
+      "img": "https://livedemo00.template-help.com/wt_prod-10492/images/post-1-370x239.jpg",
+      "title": "Top 5 Easy and Cheap Organic Breakfast Recipes",
+      "body": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Stet clita kasd gubergren, no sea takimata sanctus est",
+      "postAt": "2024-01-11",
+      "author": "Fisnik Hetemi",
+      "authorId": 8425,
+      "id": "1"
+    },
+    {
+      "img": "https://livedemo00.template-help.com/wt_prod-10492/images/post-2-370x239.jpg",
+      "title": "Everyday Dinner Choices for a Healthier, Happier You",
+      "body": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Stet clita kasd gubergren, no sea takimata sanctus est",
+      "postAt": "2024-01-10",
+      "author": "Fisnik Hetemi",
+      "authorId": 8425,
+      "id": "2"
+    },
+    {
+      "img": "https://livedemo00.template-help.com/wt_prod-10492/images/post-3-370x239.jpg",
+      "title": "Standardizing the Organic Industry in the USA",
+      "body": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Stet clita kasd gubergren, no sea takimata sanctus est",
+      "postAt": "2024-01-10",
+      "author": "Gabriel Barbosa",
+      "authorId": 1745,
+      "id": "3"
+    },
+    {
+      "img": "https://livedemo00.template-help.com/wt_prod-10492/images/post-4-370x239.jpg",
+      "title": "Making Your Food Organic in a Few Simple Steps",
+      "body": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Stet clita kasd gubergren, no sea takimata sanctus est",
+      "postAt": "2024-01-10",
+      "author": "Fisnik Hetemi",
+      "authorId": 8425,
+      "id": "4"
+    },
+    {
+      "img": "https://livedemo00.template-help.com/wt_prod-10492/images/post-5-370x239.jpg",
+      "title": "Why Organic Farming Keeps Getting Globally Popular",
+      "body": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Stet clita kasd gubergren, no sea takimata sanctus est",
+      "postAt": "2024-01-11",
+      "author": "Gabriel Barbosa",
+      "authorId": 1745,
+      "id": "5"
+    },
+    {
+      "img": "https://livedemo00.template-help.com/wt_prod-10492/images/post-6-370x239.jpg",
+      "title": "How to Make Your Breakfast Easy and Yummy",
+      "body": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Stet clita kasd gubergren, no sea takimata sanctus est",
+      "postAt": "2024-01-10",
+      "author": "Gabriel Barbosa",
+      "authorId": 1745,
+      "id": "6"
+    },
+    {
+      "img": "https://placehold.co/1260x500?text=This+is+a+title",
+      "title": "This is a title",
+      "body": "This is blog content",
+      "postAt": "2024-1-11",
+      "author": "Filan Fisteku",
+      "authorId": 9841,
+      "id": "7"
+    },
+    {
+      "id": 2144,
+      "title": "This is why I love fruits",
+      "img": "https://placehold.co/1260x500?text=This+is+why+I+love+fruits",
+      "body": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam, optio sint laboriosam quia fugit pariatur labore sequi repudiandae delectus placeat accusantium laborum at aut a voluptatibus tempore repellendus, quis assumenda veritatis aliquid earum. Autem iure illo corporis sed voluptas dolorem veniam eligendi odit quisquam vitae quasi voluptatem quos fuga earum suscipit fugit voluptates hic ullam, assumenda culpa officia ipsam recusandae animi omnis. Ratione error in nisi velit nobis itaque deserunt blanditiis provident obcaecati, quam unde placeat ea enim modi, at dolores. Assumenda obcaecati quos perspiciatis facere suscipit tenetur ea, molestias fugit velit, aspernatur delectus? Quas eligendi numquam autem nihil officiis assumenda ullam dignissimos perferendis nemo odit aperiam fugit esse veniam pariatur amet laborum obcaecati, necessitatibus quisquam id recusandae itaque rerum! Odio minus vero illo asperiores sunt consequatur eaque porro eligendi minima. Et itaque dolorum rem quas voluptatem. Totam hic architecto ipsum voluptates beatae libero sequi fuga, esse saepe ad eveniet expedita, sint minima veniam nesciunt itaque temporibus sapiente perferendis quos nihil nostrum, odit quod labore commodi. Reiciendis illo voluptate praesentium exercitationem fugiat unde harum, perspiciatis illum doloribus asperiores incidunt veritatis molestiae minima distinctio debitis soluta porro. Doloremque repellat dolorem dignissimos ad adipisci quaerat ratione, obcaecati reiciendis, commodi excepturi in, possimus debitis? Natus, mollitia optio nam sequi harum esse quam adipisci sunt aut! Commodi libero possimus adipisci esse sint facere consequatur voluptatem et iusto? Labore velit dolorem et vero delectus qui reiciendis ullam rem omnis in, laudantium eaque est voluptatum obcaecati, voluptas veritatis sunt, placeat animi! Impedit, numquam labore sequi odio in iusto modi! Soluta temporibus cumque inventore placeat laboriosam tempore, esse qui aspernatur dicta quidem reiciendis porro consequatur perferendis ipsum voluptas laudantium fugit voluptatum beatae tenetur. Saepe, molestias consequatur. Laborum expedita, numquam minus ut voluptas aut aliquid amet perferendis eaque consectetur id porro cum quam quae dolorum veritatis quidem inventore maxime dolorem? Distinctio suscipit nobis molestiae cum cumque, obcaecati amet doloremque tempora laboriosam repudiandae eius rem asperiores culpa iusto aspernatur sunt, enim id vero doloribus. Laborum itaque eos deleniti, iure asperiores sint iusto eaque? Officiis, iste velit! Veniam quod accusamus repudiandae, quos sunt voluptatum? Cupiditate corrupti, dicta porro molestias consectetur suscipit fugit ea, dolore cum quibusdam aspernatur a beatae eum sed. Deserunt accusantium similique repudiandae incidunt eaque quia libero in cum animi quos sapiente, voluptatem magnam beatae ea, cumque inventore eveniet adipisci ex! Distinctio assumenda quibusdam eos eveniet placeat corporis nisi ipsa dolorem in ipsum quaerat veniam totam fugiat iusto, aspernatur saepe cumque omnis voluptatibus excepturi asperiores velit quasi natus sed molestias. Rem, aliquid dignissimos! Ab, veritatis animi? Vitae nesciunt corporis enim labore tempore, tempora eius omnis a esse repellendus adipisci id laudantium officiis ipsa aspernatur quasi laboriosam impedit quidem reiciendis saepe non magnam quam? Iure, laudantium vel aliquid blanditiis neque cum voluptas laborum distinctio impedit nemo, laboriosam numquam cumque beatae quae enim? Possimus dolores doloremque ducimus dicta impedit. Doloribus ullam impedit quam eligendi, expedita eum soluta labore quia, repellendus dignissimos, autem nam necessitatibus et consequatur! Sunt blanditiis laborum quod ipsum quae aliquam minus! Quos hic neque similique corporis earum.",
+      "postAt": "2024-10-4",
+      "author": "Fisnik Hetemi",
+      "authorId": "8425"
     }
   ]
 }

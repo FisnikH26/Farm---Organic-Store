@@ -58,7 +58,7 @@
             let email = document.forms["sign_in_form"]["email"].value;
             let password = document.forms["sign_in_form"]["password"].value;
 
-            await fetch(`http://localhost:3030/users?email=${email}`)
+            await fetch(`http://localhost:3000/users?email=${email}`)
                 .then(res => res.json())
                 .then(data => {
                     if (email !== data[0].email) {

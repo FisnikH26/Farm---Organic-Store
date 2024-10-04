@@ -16,7 +16,7 @@ function getCartFromStorage() {
 getCartFromStorage();
 async function addToCart(id) {
   await fetch(
-    `https://658b1777ba789a9622386cc7.mockapi.io/farm/v1/products?id=${id}`
+    `http://localhost:3000/products?id=${id}`
   )
     .then((res) => res.json())
     .then((data) => {

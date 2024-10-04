@@ -1,5 +1,5 @@
 export default async function blogDetails(div, id) {
-    await fetch(`https://658b1777ba789a9622386cc7.mockapi.io/farm/v1/blogs?id=${id}`)
+    await fetch(`http://localhost:3000/blog?id=${id}`)
         .then((res) => res.json())
         .then((data) =>{
             if(data[0].id){
@@ -8,9 +8,7 @@ export default async function blogDetails(div, id) {
                         <p class="m-0">ORGANIC FOOD</p> 
                         <span> | </span> 
                         <p class="m-0 text-muted">
-                            <a href="profile.html?author=${blog.author}">
-                                ${blog.author}
-                            </a>
+                            ${blog.author}
                         </p>
                         <span> | </span> 
                         <p class="m-0 text-muted">${blog.postAt}</p>
@@ -19,7 +17,7 @@ export default async function blogDetails(div, id) {
                         <h2 class="font-poppins fs-1">${blog.title}</h2>
                     </div>
                     <div class="post-img my-5">
-                        <img src="${blog.img}" width="100%" height="500px" alt="">
+                        <img src="https://placehold.co/1260x500?text=${blog.title.split("").join("+")}" width="100%" height="500px" alt="">
                     </div>
                     <div class="body">
                     

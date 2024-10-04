@@ -84,7 +84,7 @@
                     <div class="popular-products">
                         <h5 class="border-bottom pb-3 font-poppins fw-semibold">POPULAR PRODUCTS</h5>
                         <div class="d-flex align-items-center gap-4">
-                            <img src="https://livedemo00.template-help.com/wt_prod-10492/images/product-1-220x160.png"
+                            <img src="https://imgs.search.brave.com/-n5I12nwhIFfmIQSUwn187et4fzVflMJRkhaS3Y1UHk/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zdGF0/aWMudmVjdGVlenku/Y29tL3N5c3RlbS9y/ZXNvdXJjZXMvcHJl/dmlld3MvMDI5LzIw/MC8yNjkvbm9uXzJ4/L2JhbmFuYS10cmFu/c3BhcmVudC1iYWNr/Z3JvdW5kLWZyZWUt/cG5nLnBuZw"
                                 width="85px" alt="">
                             <div class="mt-2">
                                 <p class="m-0">Banana</p>
@@ -92,7 +92,7 @@
                             </div>
                         </div>
                         <div class="d-flex align-items-center gap-4">
-                            <img src="https://livedemo00.template-help.com/wt_prod-10492/images/product-2-191x132.png"
+                            <img src="https://imgs.search.brave.com/gMa5a3b6hjrLc0pV_Bvjd377jtkdU8XyAKLqrqoJgbw/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zdGF0/aWMudmVjdGVlenku/Y29tL3N5c3RlbS9y/ZXNvdXJjZXMvdGh1/bWJuYWlscy8wNDgv/MDUwLzk2OS9zbWFs/bC9wb3RhdG9lcy1v/bi10cmFuc3BhcmVu/dC1iYWNrZ3JvdW5k/LXBuZy5wbmc"
                                 width="85px" alt="">
                             <div class="mt-2">
                                 <p class="m-0">Patatoes</p>
@@ -100,7 +100,7 @@
                             </div>
                         </div>
                         <div class="d-flex align-items-center gap-3">
-                            <img src="https://livedemo00.template-help.com/wt_prod-10492/images/product-5-204x156.png"
+                            <img src="https://imgs.search.brave.com/ZV5MXeNs7ndfg8sRCwR2_xdLPKvJOoi4TyUNsGs529o/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/cG5nbWFydC5jb20v/ZmlsZXMvMy9TdHJh/d2JlcnJ5LVRyYW5z/cGFyZW50LUJhY2tn/cm91bmQucG5n"
                                 width="85px" alt="">
                             <div class="mt-2">
                                 <p class="m-0">Strawberries</p>
@@ -194,6 +194,9 @@
             </div>
         </div>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+        </script>
     <script src="/assets/js/helpers.js"></script>
     <script type="module">
         import Navbar from '/assets/components/Navbar.js'
@@ -215,10 +218,12 @@
             }
         })
         const getProduct = async () => {
-            await fetch(`https://658b1777ba789a9622386cc7.mockapi.io/farm/v1/products`)
+            await fetch(`http://localhost:3000/products`)
                 .then(res => res.json())
                 .then(data => {
                     products = data
+
+                    
                 })
         }
         function displayProducts(products) {

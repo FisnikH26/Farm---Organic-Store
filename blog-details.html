@@ -37,7 +37,7 @@
         import blogDetails from '/assets/components/BlogDetails.js'
         import Navbar from '/assets/components/Navbar.js'
         
-        document.querySelector('header').innerHTML = Navbar("Blog")
+        document.querySelector('header').innerHTML = Navbar()
         const query_string = getQueryStringFromURL(window.location.href)
         const params = new URLSearchParams(query_string)
         const blog = document.querySelector(".blog")

@@ -29,7 +29,7 @@
             <div id="contentMsg">
             </div>
         </div>
-
+        
         <button type="submit" class="btn btn-primary ">Submit</button>
     </form>
 
@@ -96,7 +96,7 @@
 
 
         async function addBlogPost(title, content) {
-            let author = JSON.parse(localStorage.getItem('loggedInUser'))[0]
+            let author = JSON.parse(localStorage.getItem('loggedInUser'))
             let date = new Date(),
                 day = date.getDate(),
                 month = date.getMonth() + 1,
@@ -117,7 +117,7 @@
 
 
 
-            let response = await fetch('https://658b1777ba789a9622386cc7.mockapi.io/farm/v1/blogs', {
+            let response = await fetch('http://localhost:3000/blog', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

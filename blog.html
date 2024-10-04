@@ -116,10 +116,10 @@
     <script type="module">
         import Navbar from '/assets/components/Navbar.js'
 
-        document.querySelector('header').innerHTML = Navbar("Blog")
+        document.querySelector('header').innerHTML = Navbar()
         async function getBlogs() {
             let div = document.querySelector('.row')
-            await fetch("https://658b1777ba789a9622386cc7.mockapi.io/farm/v1/blogs")
+            await fetch("http://localhost:3000/blog")
                 .then((res) => res.json())
                 .then((data) => {
                     data.map((blog) => {
@@ -128,7 +128,7 @@
                                             <div class="card border-0 w-100 " style="width: 18rem;">
                                                 <a href="/blog-details.html?id=${id}" class="text-decoration-none">
                                                     <div class="card-img overflow-hidden">
-                                                        <img src="${img}" class="card-img-top" alt="...">
+                                                        <img src="${`https://placehold.co/1260x500?text=${title.split("").join("+")}`}" class="card-img-top" alt="...">
                                                     </div>
                                                 </a>
                                                 <div class="card-body">
