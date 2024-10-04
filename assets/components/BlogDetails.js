@@ -17,10 +17,9 @@ export default async function blogDetails(div, id) {
                         <h2 class="font-poppins fs-1">${blog.title}</h2>
                     </div>
                     <div class="post-img my-5">
-                        <img src="https://placehold.co/1260x500?text=${blog.title.split("").join("+")}" width="100%" height="500px" alt="">
+                        <img src="https://placehold.co/1260x500?text=${blog.title.split("").join("+")}" width="100%" height="400px" alt="">
                     </div>
                     <div class="body">
-                    
                     ${blog.body}
                     </div>
                 </div>`
