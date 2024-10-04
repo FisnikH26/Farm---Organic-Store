@@ -18,6 +18,7 @@ Log in Page
 
 
 In blogs you can read blog post and if you open your account you can post aswell
+
 Blogs
 ==============
 ![alt text](https://github.com/FisnikH26/Farm---Organic-Store/blob/main/assets/img/ui/blog1.PNG "Blogs")
@@ -27,6 +28,7 @@ Blog post
 
 
 in Shop you can buy fruit, vegetable, and bakery products 
+
 Shop
 ==============
 ![alt text](https://github.com/FisnikH26/Farm---Organic-Store/blob/main/assets/img/ui/shop1.PNG "Shop")
@@ -40,9 +42,7 @@ Checkout
 ==========
 ![alt text](https://github.com/FisnikH26/Farm---Organic-Store/blob/main/assets/img/ui/checkout.PNG "Checkout")
 
-
-
-if you can get verified and get the check next to your name
+ 
 
 If you are an admin you have access to dashboard where you can see all the users and blog posts and orders 
  the delete option is available for all of them and the edit option only for users as of right now
