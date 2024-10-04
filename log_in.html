@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
+    <title>Farm - Organic Store</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -12,24 +12,153 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="/assets/css/style.css">
 </head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #070707;
+}
+
+.container{
+    position: relative;
+    width: 500px;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container i{
+    position: absolute;
+    inset: 0;
+    border: 1.5px solid #fff;
+    transition: .5s;
+}
+    .container i{
+    position: absolute;
+    inset: 0;
+    border: 1.5px solid #fff;
+    transition: .5s;
+}
+
+.container i:nth-child(1){ animation: animate 5s linear infinite;}
+
+.container i:nth-child(2){ animation: animate 7s linear infinite;}
+
+.container i:nth-child(3){ animation: animate 11s linear infinite;}
+
+.container:hover i{
+    border: 6px solid var(--clr);
+    filter: drop-shadow(0 0 20px var(--clr));
+}
+
+.login{
+    position: absolute;
+    width: 300px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.login h2{
+    font-size: 2em;
+    color: #fff;
+}
+
+.login .input-box{
+    position: relative;
+    width: 100%;
+}
+
+.login .input-box input{
+    position: relative;
+    width: 100%;
+    padding: 12px 20px;
+    background: transparent;
+    border: 2px solid #fff;
+    border-radius: 40px;
+    font-size: 1.2em;
+    color: #fff;
+    box-shadow: none;
+    outline: none;
+}
+
+.login .input-box input[type="submit"]{
+    width: 100%;
+    background: #0078ff;
+    background: linear-gradient(45deg, #0d10d8, #cb0fd1);
+    border: none;
+    cursor: pointer;
+}
+
+.login .input-box input::placeholder{ color: rgba(255, 255, 255, .75);}
+
+.login .links{
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 20px;
+}
+
+.login .links a{
+    color: #fff; 
+}
+
+@keyframes animate{
+    0% { transform: rotate(0deg);}
+    100%{ transform: rotate(360deg);}
+}
+
+@keyframes animate4{
+    0% { transform: rotate(360deg);}
+    100%{ transform: rotate(0deg);}
+}
+</style>
 <body>
     <form class="row g-3 my-5 mx-auto" name="sign_in_form" style="width: 500px;">
-        <div class="col-md-12">
-            <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control" id="email" placeholder="Email">
-            <div id="emailErr">
+        <form class="row g-3   " name="sign_in_form" style="width: 800px; height: 500px;">
+            <div class="container">
+                <i style="--clr: #82ac0e;"></i>
+                <i style="--clr: #bede09;"></i>
+                <i style="--clr: #91a908;"></i>
+                <div class="login">
+                    <h2>Log In</h2> 
+                    <div class="input-box">
+                        <input type="email" placeholder="Email" id="email">
+                        <div id="emailErr">
+                        </div>
+                    </div>
+                    <div class="input-box">
+                        <input type="password" placeholder="Enter Password" class="password" id="password">
+                        <div id="passwordErr">
+                        </div>
+                    </div>
+                    <div class="input-box">
+                        <input type="submit" value="Sign Up">
+                    </div>
+                    <div class="links">
+                        <small class="text-white">Don't have an account?</small>
+                        <a href="/sign_in.html" class="">Sign up</a>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="col-md-12">
-            <label for="password" class="form-label">Password</label>
-            <input type="password" class="form-control password" id="password" placeholder="Password" requ ired>
-            <div id="passwordErr">
-            </div>
-        </div>
-        <div class="col-12">
-            <button class="btn btn-primary" type="submit">Log in</button>
-        </div>
+        </form> 
     </form>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
@@ -62,7 +191,8 @@
                 .then(res => res.json())
                 .then(data => {
                     if (email !== data[0].email) {
-                        printError("emailErr", "Your email is wrong", "text-danger fw-semibold");
+                        printError("emailErr", "Your email is wrong", "text-danger fw-semibold"); 
+
                     } else if (password !== data[0].password) {
                         printError("passwordErr", "Your password is wrong", "text-danger fw-semibold");
                     }else{

@@ -44,10 +44,14 @@
 .banner {
   background-image: url(/assets/img/bg-shop.jpg);
   height: 400px;
+  background-repeat: no-repeat;
+  background-size:100%;
 }
 .banner-blog {
   background-image: url(/assets/img/bg-blog.jpg);
   height: 400px;
+  background-repeat: no-repeat;
+  background-size:100%;
 }
 .banner-checkout {
   background-image: url("https://imgs.search.brave.com/Ltu9uGJBlkwAHcSjVQssq9NbHnFfkwyMV61ojg43VnU/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/cHJlbWl1bS1waG90/by9mdXR1cmlzdGlj/LW9ubGluZS1wYXlt/ZW50LXNob3BwaW5n/LXdpdGgtY2FydC1w/aG9uZS1kYXJrLWJh/Y2tncm91bmRfMTkx/NTU1LTE4MzkuanBn/P3NpemU9NjI2JmV4/dD1qcGc");

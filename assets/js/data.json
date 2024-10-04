@@ -39,6 +39,14 @@
       "password": "homer123",
       "admin": false,
       "verified": false
+    },
+    {
+      "id": 1747,
+      "name": "Ronoroa Zoro",
+      "email": "zoro@live.com",
+      "password": "zoro",
+      "admin": false,
+      "verified": false
     }
   ],
   "orders": [
@@ -67,6 +75,32 @@
         }
       ],
       "totalCartPrice": 73
+    },
+    {
+      "id": 13208,
+      "customer_name": "John Edit",
+      "address": "Ferizaj, Kosova",
+      "customer_email": "jondoe@live.com",
+      "customer_phoneNumber": "13245678978",
+      "customer_cart": [
+        {
+          "id": "4",
+          "name": "Bread",
+          "category": "bread",
+          "img": "https://imgs.search.brave.com/qOImgMie_DV6lwJ_x0JRPRa0l_cP_smOgXP5zJPFcmU/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jbGlw/YXJ0LWxpYnJhcnku/Y29tL25ld19nYWxs/ZXJ5LzgtODc1MTNf/c2xpY2VkLWJyZWFk/LWJyZWFkLXdpdGgt/bm8tYmFja2dyb3Vu/ZC5wbmc",
+          "price": 16,
+          "amount": 3
+        },
+        {
+          "id": "2",
+          "name": "Patatoes",
+          "category": "vegetable",
+          "img": "https://imgs.search.brave.com/gMa5a3b6hjrLc0pV_Bvjd377jtkdU8XyAKLqrqoJgbw/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zdGF0/aWMudmVjdGVlenku/Y29tL3N5c3RlbS9y/ZXNvdXJjZXMvdGh1/bWJuYWlscy8wNDgv/MDUwLzk2OS9zbWFs/bC9wb3RhdG9lcy1v/bi10cmFuc3BhcmVu/dC1iYWNrZ3JvdW5k/LXBuZy5wbmc",
+          "price": 19,
+          "amount": 1
+        }
+      ],
+      "totalCartPrice": 67
     }
   ],
   "products": [
@@ -223,6 +257,15 @@
       "postAt": "2024-10-4",
       "author": "Fisnik Hetemi",
       "authorId": "8425"
+    },
+    {
+      "id": 9288,
+      "title": "Fruits",
+      "img": "https://placehold.co/1260x500?text=Fruits",
+      "body": "Fruits are healthy...",
+      "postAt": "2024-10-4",
+      "author": "John Edit",
+      "authorId": "8872"
     }
   ]
 }

@@ -19,7 +19,7 @@
 </head>
 
 <body>
-    <header>
+    <header class="header">
 
     </header>
     <section class="banner-blog d-flex align-items-center justify-content-center">
@@ -114,9 +114,12 @@
 
     <script src="/assets/js/helpers.js"></script>
     <script type="module">
-        import Navbar from '/assets/components/Navbar.js'
+         import Navbar from '/assets/components/Navbar.js'
+        
+        document.querySelector('.header').innerHTML = Navbar()
 
-        document.querySelector('header').innerHTML = Navbar()
+
+
         async function getBlogs() {
             let div = document.querySelector('.row')
             await fetch("http://localhost:3000/blog")

@@ -21,9 +21,41 @@ export default function Navbar() {
                         <li class="nav-item">
                             <a class="nav-link fw-bold" href="/shop.html">Shop</a>
                         </li>
-                        
-                        
                     </ul>
+                    <div>
+                    ${
+                        user.id
+                          ? `<div>
+                                <ul class="nav ">
+                                    <li class="nav-item dropdown">
+                                    <a class="nav-link d-flex align-items-center  text-dark dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <h6 class="mb-0 me-2">${user.name}</h6>
+                                    ${user.admin == true ? "<img src='/assets/img/crown.png' width='20px' />":""}
+                                    ${user.admin == false && user.verified == true ? "<img src='/assets/img/verified.png' width='20px' />":""}
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li class="nav-item">
+                                            <a class="nav-link text-dark fw-bold" href="/create_blog_post.html">Create a blog post</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link text-dark fw-bold" href="/profile.html?author=${user.name}">My Blogs</a>
+                                        </li>
+                                        ${user.admin == true ? (
+                                        `<li class="nav-item">
+                                            <a class="nav-link text-dark fw-bold" href="/dashboard.html">Dashboard</a>
+                                         </li>`):""
+                                        }
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li class="text-center px-3"><button class="btn btn-outline-danger w-100" onclick="logOut()">Log Out</button></li>
+                                    </ul>
+                                </li> 
+                                </ul>
+                            </div>`
+                          : 
+                          `<a href="/sign_in.html" class="btn btn-outline-warning">Sign in</a> 
+                          <a href="/log_in.html" class="btn btn-warning ">Log in</a>`
+                      }
+                  </div>
                     
                   ${
                     window.location.pathname == "/shop.html"
@@ -53,40 +85,7 @@ export default function Navbar() {
               </div>`
                       : " "
                   }
-                  <div>
-                    ${
-                        user.id
-                          ? `<div>
-                                    
-                                    <ul class="nav ">
-                                     <li class="nav-item dropdown">
-                                        <a class="nav-link d-flex align-items-center  text-dark dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <h6 class="mb-0 me-2">${user.name}</h6>
-                                        ${user.admin == true ? "<img src='/assets/img/crown.png' width='20px' />":""}
-                                        ${user.admin == false && user.verified == true ? "<img src='/assets/img/verified.png' width='20px' />":""}
-                                        </a>
-                                        <ul class="dropdown-menu">
-                                            <li class="nav-item">
-                                                <a class="nav-link text-dark fw-bold" href="/create_blog_post.html">Create a blog post</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link text-dark fw-bold" href="/profile.html?author=${user.name}">My Blogs</a>
-                                            </li>
-                                            ${user.admin == true ? `<li class="nav-item">
-                                                                        <a class="nav-link text-dark fw-bold" href="/dashboard.html">Dashboard</a>
-                                                                    </li>`:""
-                                            }
-                                            <li><hr class="dropdown-divider"></li>
-                                            <li class="text-center px-3"><button class="btn btn-outline-danger w-100" onclick="logOut()">Log Out</button></li>
-                                        </ul>
-                                    </li> 
-                                    </ul>
-                            </div>`
-                          : 
-                          `<a href="/sign_in.html" class="btn btn-outline-warning">Sign in</a> 
-                          <a href="/log_in.html" class="btn btn-warning ">Log in</a>`
-                      }
-                  </div>
+                  
                 </div>
             </div>
         </nav>`;
