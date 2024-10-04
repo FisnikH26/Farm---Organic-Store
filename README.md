@@ -10,3 +10,8 @@ if you can get verified and get the check next to your name
 
 If you are an admin you have access to dashboard where you can see all the users and blog posts and orders 
  the delete option is available for all of them and the edit option only for users as of right now
+
+**Home Page**
+
+
+![alt text](https://github.com/FisnikH26/Farm---Organic-Store/blob/main/assets/img/ui/Home.PNG "Homepage")
